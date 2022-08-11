@@ -14,14 +14,12 @@
 .navToolsTopLeft {
     display: flex;
     justify-content: flex-start;
-    margin-left: 150px;
     margin-top: 15px;
 }
 
 .navToolsTopRight {
     display: flex;
     justify-content: flex-end;
-    margin-right: 150px;
     margin-top: 15px;
 }
 
