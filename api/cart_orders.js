@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { requireUser } = require("./utils")
 
-router.post("/", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
     try {
         // const allProducts = await getAllProducts();
         res.send('hi is this working?')

@@ -38,6 +38,39 @@ router.delete("/:productId", requireAdmin, async(req, res, next) => {
     }
 })
 
+router.post("/", requireAdmin, async(req, res, next) => {
+    const { name, price, description, image } = req.body;
+
+    try {
+        const product = await createProduct({
+            name,
+            price, 
+            description,
+            image
+        })
+        res.send(product)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.patch("/:productId", requireAdmin, async(req, res, next) => {
+    const { name, price, description, image } = req.body;
+    const { productId } = req.params;
+
+    try {
+        const product = await updateProduct({
+            name,
+            price,
+            description,
+            image
+        })
+        res.send(product);
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 
 module.exports = router;
