@@ -6,21 +6,41 @@ import './Header.css';
 const Header = () => {
     const navigate = useNavigate();
     return (
-        <body>
-            <div className='navToolsMain'>
-                <div className='navToolsTitle'>
-                        <div className='navToolsSub'>
-                        <h2 onClick={()=> navigate('/')} >Home</h2>
+        
+            <div className='headerMain'>
+                <div className="homeFlexContainer">
+                        <div className='navToolsTopLeft'>
+                                <a className='registerLink' onClick={()=> navigate('/Register')} >REGISTER</a>
 
-                        <h2 onClick={()=> navigate('/Shop')} >Shop</h2>
+                                <a className='loginLink' onClick={()=> navigate('/Login')} >LOGIN</a>
 
-                        <h2 onClick={()=> navigate('/Register')} >Register</h2>
+                        </div>
 
-                        <h2 onClick={()=> navigate('/Login')} >Login</h2>
-                        </div>    
+                        <div className='navToolsTopRight'>  
+
+                                <a onClick={()=> navigate('/Cart')} >CART ({0})</a>
+
+                        </div>
                 </div>
+
+                <div className='navToolsTitle'>
+                        <h1>CYBORG FLYING WATCHES</h1>
+
+                </div>     
+
+                <div className='navToolsSub'>
+                        <a onClick={()=> navigate('/')} >HOME</a>
+
+                        <a onClick={()=> navigate('/Shop')} >SHOP</a>
+
+                        <a onClick={()=> navigate('/About')} >ABOUT</a>
+
+                        
+                </div>    
             </div>
-        </body>
+            
+            
+       
     )
 };
 

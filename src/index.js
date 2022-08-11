@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import { Header, Shop, Login, Home, Register } from './components';
+import { Header, Shop, Login, Home, Register, Cart, About } from './components';
 
 const App = () => {
     return (
@@ -22,6 +22,8 @@ const App = () => {
                     <Route path={'Shop'} element={<Shop/>}/>
                     <Route path={'Login'} element={<Login/>}/>
                     <Route path={'Register'} element={<Register/>}/>
+                    <Route path={'Cart'} element={<Cart/>}/>
+                    <Route path={'About'} element={<About/>}/>
                 </Route>
             </Routes>   
         </>

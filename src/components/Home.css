@@ -1,0 +1,25 @@
+.splashTitle {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.subTitle {
+    display: flex;
+    justify-content: center;
+    
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    width: 1250;
+    margin-top: 75px;
+    animation: fadeIn 4s; 
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
