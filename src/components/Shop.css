@@ -1,0 +1,10 @@
+.shopBox {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.productCards {
+    display: flex;
+    justify-content: center;
+}
