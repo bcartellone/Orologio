@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { requireUser } = require("./utils");
+const { requireUser, requireAdmin } = require("./utils");
 const { JWT_SECRET } = process.env;
 
 router.post("/register", async (req, res, next) => {
@@ -77,6 +77,25 @@ router.post("login", async (req, res, next) => {
     }
     } catch (error) {
         next(error);
+    }
+})
+
+router.get("/", requireAdmin, async (req, res, next) => {
+    try {
+        const allUsers = await getAllUsers();
+        res.send(allUsers)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.get("/:userId", requireAdmin, async (req, res, next) => {
+    const { userId } = req.params;
+    try {
+        const singleUser = await getUserById(userId)
+        res.send(singleUser)
+    } catch (error) {
+        next(error)
     }
 })
 
