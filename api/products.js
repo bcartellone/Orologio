@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { requireUser, requireAdmin } = require("./utils")
+const { getAllProducts } = require("../db/models/products")
 
 router.get("/", async (req, res, next) => {
     try {
-        // const allProducts = await getAllProducts();
-        res.send('hi is this working?')
+        const allProducts = await getAllProducts();
+        res.send(allProducts)
     } catch (error) {
         next(error)
     }
