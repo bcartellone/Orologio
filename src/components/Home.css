@@ -16,7 +16,7 @@ main {
     height: 500px;
     width: 1250;
     margin-top: 75px;
-    animation: fadeIn 4s; 
+    animation: fadeIn 3s; 
 }
 
 @keyframes fadeIn {
