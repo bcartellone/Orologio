@@ -1,37 +1,56 @@
 // grab our db client connection to use with our adapters
 const client = require('../client');
+const bcrypt = require("bcrypt");
 
-module.exports = {
-  // add your database adapter fns here
-  createUser,
-  getAllUsers,
-};
 
 async function getAllUsers(users){
   try {
     const {rows: users } = await client.query(`
     SELECT users.*   FROM users
     `);
-  /* this adapter should fetch a list of users from your db */
-
- 
+    /* this adapter should fetch a list of users from your db */
+    
+    
     return users;
   } catch (error) {
     throw error;
   }
 }
 
-  async function createUser({ username, password, roleId }){
+async function createUser({ username, password, roleId }){
+  const SALT_COUNT = 10;
+  const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
   try {
-    const { rows: [user]}  = await client.query( `INSERT INTO users( username, password )
-    VALUES($1, $2, $3,$4,$5)
+    const { rows: [user]}  = await client.query( `
+    INSERT INTO users(username, password, "roleId")
+    VALUES($1, $2, $3)
     ON CONFLICT(username) DO NOTHING
-    RETURNING id, username
-    ;`, [username,password,roleId,]);
+    RETURNING username, id;
+    `, [username, hashedPassword, roleId]);
     return user;
-}
-catch (error){
-throw error
+  } catch (error){
+    throw error
   }
-  
 }
+
+async function getUserByUsername(username) {
+  if (!username) {
+    return;
+  }
+  try {
+    const { rows: [user] } = await client.query(`
+    SELECT *
+    FROM users 
+    WHERE username=$1;
+    `, [username])
+  } catch (error) {
+    throw error;
+  }
+}
+
+module.exports = {
+  // add your database adapter fns here
+  createUser,
+  getAllUsers,
+  getUserByUsername
+};

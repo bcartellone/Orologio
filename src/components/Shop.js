@@ -10,11 +10,11 @@ const Shop = () => {
    
         const fetchProducts = async () => {
             try {
-                const response = await fetch('/api');
+                const response = await fetch('/api/products');
                 const data = await response.json();
+
                 console.log(data);
-                console.log(data.data);
-                    setProducts(data.data.products);
+                    setProducts(data);
                 } catch (error) {
                     console.error(error);
             }
@@ -33,9 +33,10 @@ const Shop = () => {
                     console.log(currentProduct);
                 return <div key={idx}>
                         <div className ="indivProduct">   
-                            <p>{currentProduct.title}</p>
+                            <p>{currentProduct.name}</p>
+                            <p>{currentProduct.price}</p>
                             <p>{currentProduct.description}</p>
-                            <p>{currentProduct.author.username}</p>
+                            <a>{currentProduct.image}</a>
                         </div> 
                         
                     </div>
