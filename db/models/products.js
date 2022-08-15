@@ -27,6 +27,22 @@ return rows;
 catch (error){
 throw error;  }
 }
+
+async function getProductById(id) {
+    if (!id) {
+        return;
+    }
+    try {
+        const { rows: [product] } = await client.query(`
+        SELECT *
+        FROM products
+        WHERE id=$1
+        `, [id]);
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
-getAllProducts, createProduct
+getAllProducts, createProduct, getProductById
 }

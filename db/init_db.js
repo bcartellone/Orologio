@@ -4,6 +4,14 @@ const {
  // for example, User
 }= require('../db/models/products');
 
+const {
+  createUser
+} = require('../db/models/user')
+
+const {
+  createRole
+} = require('../db/models/role')
+
 const  client = require('./client')
 
 
@@ -74,9 +82,10 @@ async function populateInitialData() {
    // create useful starting data by leveraging your
    // Model.method() adapters to seed your db, for example:
    // const user1 = await User.createUser({ ...user info goes here... })
-   const product1 = await createProduct({name: "Special",
-   description: "special",
- price: 145.99,
+   
+const product1 = await createProduct({name: "Special",
+description: "special",
+price: 145.99,
 image: "google.com",})
 
 const product2 = await createProduct({name: "Ferme",
@@ -103,6 +112,20 @@ const product6 = await createProduct ({name: "Jaeger",
 description: "Jaeger",
 price: 105.99,
 image :"google.com"})
+
+const customerRole = await createRole('customer')
+const adminRole = await createRole('admin')
+
+const user1 = await createUser({username: 'jeff', password: 'bezos', roleId: 1});
+const user2 = await createUser({username: 'ricky', password: 'sophin', roleId: 2});
+const user3 = await createUser({username: 'elon', password: 'musk', roleId: 1});
+const user4 = await createUser({username: 'guest', password: 'user', roleId: 1});
+const user5 = await createUser({username: 'bill', password: 'gates', roleId: 1});
+const user6 = await createUser({username: 'daniel', password: 'landis', roleId: 2});
+const user7 = await createUser({username: 'bennett', password: 'cartellone', roleId: 2});
+const user8 = await createUser({username: 'mark', password: 'zuckerberg', roleId: 1});
+const user9 = await createUser({username: 'harry', password: 'potter', roleId: 1});
+const user10 = await createUser({username: 'morpheus', password: 'dream', roleId: 1});
 
 
 
