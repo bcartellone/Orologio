@@ -3,15 +3,15 @@ const client = require('../client');
 const bcrypt = require("bcrypt");
 
 
-async function getAllUsers(users){
+async function getAllUsers(){
   try {
-    const {rows: users } = await client.query(`
-    SELECT users.*   FROM users
+    const { rows } = await client.query(`
+    SELECT * 
+    FROM users;
     `);
-    /* this adapter should fetch a list of users from your db */
     
     
-    return users;
+    return rows;
   } catch (error) {
     throw error;
   }
@@ -43,6 +43,7 @@ async function getUserByUsername(username) {
     FROM users 
     WHERE username=$1;
     `, [username])
+    return user;
   } catch (error) {
     throw error;
   }
