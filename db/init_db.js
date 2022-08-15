@@ -1,29 +1,14 @@
 const {
-  createProduct
- // declare your model imports here
- // for example, User
-}= require('../db/models/products');
-
-const {
-  createUser
-} = require('../db/models/user')
-
-const {
-  createRole
-} = require('../db/models/role')
-
-const  client = require('./client')
-
-
-
-   
-   
- 
+  client,
+  User,
+  Products,
+  Role
+} = require('./DB_cyborg flying');
 
    async function createTables(){
  
        client.connect();
-       await client.query(`
+        await client.query(`
    DROP TABLE IF EXISTS cart_items;
    DROP TABLE IF EXISTS cart_order;
    DROP TABLE IF EXISTS users;
@@ -83,53 +68,60 @@ async function populateInitialData() {
    // Model.method() adapters to seed your db, for example:
    // const user1 = await User.createUser({ ...user info goes here... })
    
-const product1 = await createProduct({name: "Special",
+const product1 = await Products.createProduct({name: "Special",
 description: "special",
 price: 145.99,
 image: "google.com",})
 
-const product2 = await createProduct({name: "Ferme",
+const product2 = await Products.createProduct({name: "Ferme",
 description : "special",
 price : 125.99,
 image : "google.com"})
 
-const product3 = await createProduct ({name: "Duke",
+const product3 = await Products.createProduct ({name: "Duke",
 description: "duke",
 price: 200.99,
 image :"google.com"})
 
-const product4 = await createProduct ({name: "Monarch",
+const product4 = await Products.createProduct ({name: "Monarch",
 description: "monarch",
 price: 165.99,
 image :" google.com"})
 
-const product5 = await createProduct ({name: "Montblane",
+const product5 = await Products.createProduct ({name: "Montblane",
 description: "montblane",
 price: 85.99,
 image :" google.com"})
 
-const product6 = await createProduct ({name: "Jaeger",
+const product6 = await Products.createProduct ({name: "Jaeger",
 description: "Jaeger",
 price: 105.99,
 image :"google.com"})
 
-const customerRole = await createRole('customer')
-const adminRole = await createRole('admin')
-
-const user1 = await createUser({username: 'jeff', password: 'bezos', roleId: 1});
-const user2 = await createUser({username: 'ricky', password: 'sophin', roleId: 2});
-const user3 = await createUser({username: 'elon', password: 'musk', roleId: 1});
-const user4 = await createUser({username: 'guest', password: 'user', roleId: 1});
-const user5 = await createUser({username: 'bill', password: 'gates', roleId: 1});
-const user6 = await createUser({username: 'daniel', password: 'landis', roleId: 2});
-const user7 = await createUser({username: 'bennett', password: 'cartellone', roleId: 2});
-const user8 = await createUser({username: 'mark', password: 'zuckerberg', roleId: 1});
-const user9 = await createUser({username: 'harry', password: 'potter', roleId: 1});
-const user10 = await createUser({username: 'morpheus', password: 'dream', roleId: 1});
+const product7 = await Products.createProduct ({name: "Test",
+description: "Product",
+price: 105.99,
+image :"google.com"})
 
 
+const customerRole = await Role.createRole('customer')
+const adminRole = await Role.createRole('admin')
 
-  
+const user1 = await User.createUser({username: 'jeff', password: 'bezos', roleId: 1});
+const user2 = await User.createUser({username: 'ricky', password: 'sophin', roleId: 2});
+const user3 = await User.createUser({username: 'elon', password: 'musk', roleId: 1});
+const user4 = await User.createUser({username: 'guest', password: 'user', roleId: 1});
+const user5 = await User.createUser({username: 'bill', password: 'gates', roleId: 1});
+const user6 = await User.createUser({username: 'daniel', password: 'landis', roleId: 2});
+const user7 = await User.createUser({username: 'bennett', password: 'cartellone', roleId: 2});
+const user8 = await User.createUser({username: 'mark', password: 'zuckerberg', roleId: 1});
+const user9 = await User.createUser({username: 'harry', password: 'potter', roleId: 1});
+const user10 = await User.createUser({username: 'morpheus', password: 'dream', roleId: 1});
+
+// console.log(await User.getUserByUsername('ricky'))
+// console.log(await Products.getAllProducts())
+// console.log(await Products.getProductById(3))
+// console.log(await User.getAllUsers())
 
 
  } catch (error) {
