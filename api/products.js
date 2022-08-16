@@ -6,7 +6,7 @@ const { Products } = require("../db/DB_cyborg flying.js")
 
 router.get("/", async (req, res, next) => {
     try {
-        const allProducts = await getAllProducts();
+        const allProducts = await Products.getAllProducts();
         res.send(allProducts)
     } catch (error) {
         next(error)
@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:productId", async(req, res, next) => {
     const { productId } = req.params;
     try {
-        const product = await getProductById(productId);
+        const product = await Products.getProductById(productId);
         if (!product) {
             res.send({
                 error: "ProductDoesNotExistError",
@@ -33,7 +33,7 @@ router.delete("/:productId", requireAdmin, async(req, res, next) => {
     const { productId } = req.params;
 
     try {
-        const deleted = await deleteProduct(productId);
+        const deleted = await Products.deleteProduct(productId);
         res.send(deleted)
     } catch (error) {
         next(error)
@@ -44,7 +44,7 @@ router.post("/", requireAdmin, async(req, res, next) => {
     const { name, price, description, image } = req.body;
 
     try {
-        const product = await createProduct({
+        const product = await Products.createProduct({
             name,
             price, 
             description,
@@ -61,7 +61,7 @@ router.patch("/:productId", requireAdmin, async(req, res, next) => {
     const { productId } = req.params;
 
     try {
-        const product = await updateProduct({
+        const product = await Products.updateProduct({
             name,
             price,
             description,

@@ -1,14 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const { requireUser, requireAdmin } = require("./utils");
-const { User, Role } = require("../db/DB_cyborg flying.js")
+const { User } = require("../db/DB_cyborg flying.js")
+// const { getUserByUsername, createUser } = require("../db/models/user")
+const jwt = require("jsonwebtoken");
+require ("dotenv").config();
+const bcrypt = require('bcrypt');
 const { JWT_SECRET } = process.env;
 
 router.post("/register", async (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, roleId } = req.body;
      
     try {
-        const _user = await getUserByUsername(username);
+        const _user = await User.getUserByUsername(username);
 
         if (_user) {
             res.send({
@@ -25,10 +29,15 @@ router.post("/register", async (req, res, next) => {
             })
         }
 
-        const user = await createUser({
+       await User.createUser({
             username, 
             password,
+            roleId,
         });
+        const user = await User.getUserByUsername(username);
+
+        console.log(user);
+        console.log("this is the secret", JWT_SECRET);
 
         const token = jwt.sign({id: user.id, username,}, JWT_SECRET)
 
@@ -45,7 +54,7 @@ router.post("/register", async (req, res, next) => {
     }
 });
 
-router.post("login", async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -56,7 +65,7 @@ router.post("login", async (req, res, next) => {
     }
 
     try {
-    const user = await getUserByUsername(username);
+    const user = await User.getUserByUsername(username);
     const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET);
     const hashedPassword = user.password;
     const isValid = await bcrypt.compare(password, hashedPassword);
@@ -81,23 +90,23 @@ router.post("login", async (req, res, next) => {
     }
 })
 
-router.get("/", requireAdmin, async (req, res, next) => {
-    try {
-        const allUsers = await getAllUsers();
-        res.send(allUsers)
-    } catch (error) {
-        next(error)
-    }
-})
+// router.get("/", requireAdmin, async (req, res, next) => {
+//     try {
+//         const allUsers = await User.getAllUsers();
+//         res.send(allUsers)
+//     } catch (error) {
+//         next(error)
+//     }
+// })
 
-router.get("/:userId", requireAdmin, async (req, res, next) => {
-    const { userId } = req.params;
-    try {
-        const singleUser = await getUserById(userId)
-        res.send(singleUser)
-    } catch (error) {
-        next(error)
-    }
-})
+// router.get("/:userId", requireAdmin, async (req, res, next) => {
+//     const { userId } = req.params;
+//     try {
+//         const singleUser = await User.getUserById(userId)
+//         res.send(singleUser)
+//     } catch (error) {
+//         next(error)
+//     }
+// })
 
 module.exports = router;
