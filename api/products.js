@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { requireUser, requireAdmin } = require("./utils")
-const { getAllProducts } = require("../db/models/products")
+// const { getAllProducts } = require("../db/models/products")
+const { Products } = require("../db/DB_cyborg flying.js")
 
 router.get("/", async (req, res, next) => {
     try {

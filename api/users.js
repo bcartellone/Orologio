@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { requireUser, requireAdmin } = require("./utils");
+const { User, Role } = require("../db/DB_cyborg flying.js")
 const { JWT_SECRET } = process.env;
 
 router.post("/register", async (req, res, next) => {
