@@ -3,7 +3,9 @@ const {
   client,
   User,
   Products,
-  Role
+  Role,
+  Item,
+  Order
 } = require('./DB_cyborg flying');
 
    async function createTables(){
@@ -146,13 +148,40 @@ const user8 = await User.createUser({username: 'mark', password: 'zuckerberg', r
 const user9 = await User.createUser({username: 'harry', password: 'potter', roleId: 1});
 const user10 = await User.createUser({username: 'morpheus', password: 'dream', roleId: 1});
 
+const order1 = await Order.createCartOrder({orderStatus: false, userId: 1})
+const order2 = await Order.createCartOrder({orderStatus: true, userId: 2})
+const order3 = await Order.createCartOrder({orderStatus: true, userId: 3})
+const order4 = await Order.createCartOrder({orderStatus: true, userId: 4})
+const order5 = await Order.createCartOrder({orderStatus: false, userId: 5})
+const order6 = await Order.createCartOrder({orderStatus: true, userId: 6})
+const order7 = await Order.createCartOrder({orderStatus: true, userId: 7})
+const order8 = await Order.createCartOrder({orderStatus: true, userId: 8})
+const order9 = await Order.createCartOrder({orderStatus: true, userId: 9})
+const order10 = await Order.createCartOrder({orderStatus: true, userId: 10})
+
+const item1 = await Item.createCartItem({productId: 13, orderId: 10})
+const item2 = await Item.createCartItem({productId: 5, orderId: 9})
+const item3 = await Item.createCartItem({productId: 7, orderId: 2})
+const item4 = await Item.createCartItem({productId: 8, orderId: 3})
+const item5 = await Item.createCartItem({productId: 5, orderId: 9})
+const item6 = await Item.createCartItem({productId: 8, orderId: 3})
+const item7 = await Item.createCartItem({productId: 10, orderId: 6})
+const item8 = await Item.createCartItem({productId: 10, orderId: 7})
+const item9 = await Item.createCartItem({productId: 11, orderId: 2})
+const item10 = await Item.createCartItem({productId: 6, orderId: 3})
+const item11 = await Item.createCartItem({productId: 11, orderId: 2})
+const item12 = await Item.createCartItem({productId: 6, orderId: 2})
+
 // console.log(await Products.deleteProduct(1))
 // console.log(await User.getUserByUsername('ricky'))
 // console.log(await Products.getAllProducts())
 // console.log(await Products.getProductById(3))
 // console.log(await User.getAllUsers())
 // console.log(await Products.updateProduct({id: 1, name: 'test', description: 'this is a test', price: 10, image: 'google.com'}))
-
+// console.log(await Order.createCartOrder({orderStatus: true, userId: 2}))
+// console.log(await Item.createCartItem({productId: 11, orderId: 1}))
+// console.log(await Role.createRole('guest'))
+// console.log(await Item.deleteCartitem(2))
  } catch (error) {
    throw error;
  }
