@@ -7,6 +7,7 @@ async function createRole(name) {
             VALUES ($1)
             RETURNING *;
         `, [name])
+        return role;
     } catch (error) {
         throw error
     }
