@@ -181,7 +181,8 @@ const item12 = await Item.createCartItem({productId: 6, orderId: 2})
 // console.log(await Order.createCartOrder({orderStatus: true, userId: 2}))
 // console.log(await Item.createCartItem({productId: 11, orderId: 1}))
 // console.log(await Role.createRole('guest'))
-// console.log(await Item.deleteCartitem(2))
+// console.log(await Item.deleteCartItem(2))
+console.log(await Order.destroyCartOrder(3))
  } catch (error) {
    throw error;
  }

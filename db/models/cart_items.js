@@ -13,7 +13,7 @@ async function createCartItem({ productId, orderId }) {
     }
 }
 
-async function deleteCartitem(id) {
+async function deleteCartItem(id) {
     try {
         const { rows: [deletedItem]} = await client.query(`
             DELETE FROM cart_items
@@ -25,6 +25,8 @@ async function deleteCartitem(id) {
         throw error
     }
 }
+
+
 module.exports = {
-    createCartItem, deleteCartitem
+    createCartItem, deleteCartItem
 }
