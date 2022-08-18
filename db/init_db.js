@@ -189,7 +189,6 @@ console.log(await Order.destroyCartOrder(3))
 };
 
 
-
 createTables()
  .then(populateInitialData)
  .catch(console.error)

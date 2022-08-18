@@ -30,6 +30,35 @@ async function destroyCartOrder(id) {
         throw error
     }
 }
+
+async function getOrderById(id) {
+    try {
+      const { rows: [ cart_order ] } = await client.query(`
+        SELECT *
+        FROM cart_order
+        WHERE id=($1);
+      `, [id])
+  
+      return cart_order;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+// async function getProductsByOrderId(id) {
+//     try {
+//         const { rows: [ cart_order ] } = await client.query(`
+//         SELECT *
+//         FROM products
+//         WHERE orderId=($1);
+//     `, [id])
+
+//     } catch (error) {
+//       console.log(error);
+//     }
+// }
+  
+  
 module.exports = {
-    createCartOrder, destroyCartOrder
+    createCartOrder, destroyCartOrder, getOrderById
 }
