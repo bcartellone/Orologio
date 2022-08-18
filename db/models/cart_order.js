@@ -13,6 +13,23 @@ async function createCartOrder({ orderStatus, userId }) {
     }
 }
 
+async function destroyCartOrder(id) {
+    try {
+        await client.query(`
+            DELETE FROM cart_items
+            WHERE "orderId"=($1)
+            RETURNING *;
+        `, [id]);
+        await client.query(`
+            DELETE FROM cart_order
+            WHERE id=($1)
+            RETURNING *;
+        `, [id]);
+        return 'destroyed cart order'
+    } catch (error) {
+        throw error
+    }
+}
 module.exports = {
-    createCartOrder,
+    createCartOrder, destroyCartOrder
 }
