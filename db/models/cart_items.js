@@ -26,7 +26,20 @@ async function deleteCartItem(id) {
     }
 }
 
+async function getCartItemsByOrderId(orderId) {
+    try {
+        const { rows } = await client.query(`
+        SELECT *
+        FROM cart_items
+        WHERE "orderId"=($1);
+    `, [orderId])
+        return rows
+    } catch (error) {
+      console.log(error);
+    }
+}
+  
 
 module.exports = {
-    createCartItem, deleteCartItem
+    createCartItem, deleteCartItem, getCartItemsByOrderId
 }

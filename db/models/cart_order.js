@@ -30,6 +30,51 @@ async function destroyCartOrder(id) {
         throw error
     }
 }
+
+async function getOrderById(id) {
+    try {
+      const { rows: [ cart_order ] } = await client.query(`
+        SELECT *
+        FROM cart_order
+        WHERE id=($1);
+      `, [id])
+  
+      return cart_order;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+async function getActiveCartOrderByUserId(userId) {
+    try {
+        const { rows } = await client.query(`
+        SELECT *
+        FROM cart_order
+        WHERE "orderStatus"=TRUE
+        AND "userId"=($1);
+        `, [userId]) 
+
+    return rows;
+    } catch (error) {
+      console.log(error);
+    }
+}
+
+async function updateCartOrder( { orderStatus, userId, id } ) {
+    try {
+        const { rows: [order] } = await client.query(`
+        UPDATE cart_order
+        SET "orderStatus"=$1, "userId"=$2
+        WHERE id=${id}
+        RETURNING *;
+
+    `, [orderStatus, userId])
+    return order;
+    } catch (error) {
+        console.log(error);
+      }
+}
+
 module.exports = {
-    createCartOrder, destroyCartOrder
+    createCartOrder, destroyCartOrder, getOrderById, getActiveCartOrderByUserId, updateCartOrder
 }
