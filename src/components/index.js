@@ -6,6 +6,7 @@ import About from './About';
 import Register from './Register';
 import Login from './Login';
 import SingleProduct from './SingleProduct';
+import Checkout from './Checkout';
 
-export { Header, Shop, Home, Cart, About, Register, Login, SingleProduct };
+export { Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout };
 

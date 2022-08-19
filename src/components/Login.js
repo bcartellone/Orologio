@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
+    const navigate = useNavigate()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
     const handleSubmit = async (e) => {
@@ -22,6 +24,10 @@ const Login = () => {
             const data = await response.json();
             console.log('data:', data)
             console.log('token:', data.token)
+            if (data.token) {
+                navigate('/');
+                setIsLoggedIn(true)
+            }
             // if (data.token) {
             //     setIsLoggedIn(true)
             // }

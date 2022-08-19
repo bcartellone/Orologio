@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import './Shop.css';
 
 const Shop = () => {
 
     const [products, setProducts] = useState([]);
-
+    const navigate = useNavigate()
     useEffect(() => {
    
         const fetchProducts = async () => {
@@ -19,30 +19,31 @@ const Shop = () => {
                     console.error(error);
             }
         
-    };
+        };
 
     fetchProducts();
         
     }, []);
 
+    function view (e) {
+        navigate(`/shop/${e.target.value}`)
+    }
+
     return (
-        <div className="productCards">
+        <div className='shop'>
             {
-            <h2> {
+             
                 products.length ? products.map((currentProduct, idx) => {
                     console.log(currentProduct);
-                return <div key={idx}>
-                        <div className ="indivProduct">   
+                return (
+                        <div className ="indivProduct" key={idx}>   
                             <p>{currentProduct.name}</p>
-                            <p>{currentProduct.price}</p>
+                            <p>${currentProduct.price}</p>
                             <p>{currentProduct.description}</p>
-                            <a>{currentProduct.image}</a>
+                            <button value={currentProduct.id} onClick={view}>VIEW</button>
+                            <img className='product-img' src={currentProduct.image} alt={currentProduct.description}></img>
                         </div> 
-                        
-                    </div>
-                    }) : <div>No products to display!</div>
-                }
-            </h2>    
+                    )}) : <div>No products to display!</div>
                 
             }
 
