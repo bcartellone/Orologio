@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Cart.css';
 
-const Register = () => {
+const Register = ({setIsLoggedIn}) => {
+    const navigate = useNavigate()
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
@@ -23,6 +25,10 @@ const Register = () => {
             console.log(response);
             const data = await response.json();
             console.log('data:', data.token);
+            if (data.token) {
+                navigate('/');
+                setIsLoggedIn(true)
+            }
             // console.log('token:', data.token);
             // if (data.token) {
             //     setIsLoggedIn(true)

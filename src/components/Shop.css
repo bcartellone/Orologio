@@ -1,10 +1,20 @@
-.shopBox {
+.indivProduct {
     display: flex;
-    justify-content: center;
-    
+    flex-direction: column;
+    height: fit-content;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
 }
 
-.productCards {
+.shop {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+}
+
+.product-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
 }

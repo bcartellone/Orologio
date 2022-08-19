@@ -10,7 +10,7 @@ const Home = () => {
         <main>
 
            
-                <img src={adimage1}/>   
+                <img src={adimage1} alt='image of a watch'/>   
             
 
         </main>

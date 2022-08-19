@@ -3,17 +3,25 @@ import { useNavigate } from 'react-router-dom';
 
 import './Header.css';
 
-const Header = () => {
+const Header = ({isLoggedIn, setIsLoggedIn}) => {
     const navigate = useNavigate();
+    function logoutHandle () {
+        setIsLoggedIn(false);
+        navigate('/')
+    }
     return (
         
             <div className='headerMain'>
                 <div className="homeFlexContainer">
                         <div className='navToolsTopLeft'>
+                                {
+                                        isLoggedIn ? <a onClick={logoutHandle}>LOGOUT</a> : 
+                                        <>
                                 <a className='registerLink' onClick={()=> navigate('/Register')} >REGISTER</a>
 
                                 <a className='loginLink' onClick={()=> navigate('/Login')} >LOGIN</a>
-
+                                </>
+                                }
                         </div>
 
                         <div className='navToolsTopRight'>  
