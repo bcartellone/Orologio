@@ -9,8 +9,6 @@ async function getAllUsers(){
     SELECT * 
     FROM users;
     `);
-    
-    
     return rows;
   } catch (error) {
     throw error;
@@ -49,9 +47,26 @@ async function getUserByUsername(username) {
   }
 }
 
+async function getUserById(userId) {
+  if (!userId) {
+    return;
+  }
+  try {
+    const { rows: [user] } = await client.query(`
+      SELECT id, username, "roleId"
+      FROM users
+      WHERE id=$1
+    `, [userId]);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   // add your database adapter fns here
   createUser,
   getAllUsers,
-  getUserByUsername
+  getUserByUsername,
+  getUserById
 };

@@ -47,14 +47,14 @@ async function getOrderById(id) {
 
 async function getActiveCartOrderByUserId(userId) {
     try {
-        const { rows } = await client.query(`
+        const { rows: [order] } = await client.query(`
         SELECT *
         FROM cart_order
         WHERE "orderStatus"=TRUE
         AND "userId"=($1);
         `, [userId]) 
 
-    return rows;
+    return order;
     } catch (error) {
       console.log(error);
     }

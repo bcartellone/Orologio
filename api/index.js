@@ -1,11 +1,10 @@
 const apiRouter = require('express').Router();
 const { JWT_SECRET } = process.env;
 const { User } = require("../db/DB_cyborg flying.js")
-// const { getUserById } =require('')
 const jwt = require("jsonwebtoken")
 
 apiRouter.use(async (req, res, next) => {
-  const prefix = 'Bearer ';
+  const prefix = "Bearer ";
   const auth = req.header("Authorization");
 
   if(!auth) {

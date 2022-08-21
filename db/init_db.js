@@ -149,7 +149,7 @@ const user9 = await User.createUser({username: 'harry', password: 'potter', role
 const user10 = await User.createUser({username: 'morpheus', password: 'dream', roleId: 1});
 
 const order1 = await Order.createCartOrder({orderStatus: false, userId: 1})
-const order2 = await Order.createCartOrder({orderStatus: false, userId: 2})
+const order2 = await Order.createCartOrder({orderStatus: true, userId: 2})
 const order3 = await Order.createCartOrder({orderStatus: true, userId: 3})
 const order4 = await Order.createCartOrder({orderStatus: true, userId: 4})
 const order5 = await Order.createCartOrder({orderStatus: false, userId: 5})
@@ -172,20 +172,6 @@ const item10 = await Item.createCartItem({productId: 6, orderId: 3})
 const item11 = await Item.createCartItem({productId: 11, orderId: 2})
 const item12 = await Item.createCartItem({productId: 6, orderId: 2})
 
-// console.log(await Products.deleteProduct(1))
-// console.log(await User.getUserByUsername('ricky'))
-// console.log(await Products.getAllProducts())
-// console.log(await Products.getProductById(3))
-// console.log(await User.getAllUsers())
-// console.log(await Products.updateProduct({id: 1, name: 'test', description: 'this is a test', price: 10, image: 'google.com'}))
-// console.log(await Order.createCartOrder({orderStatus: true, userId: 2}))
-// console.log(await Item.createCartItem({productId: 11, orderId: 1}))
-// console.log(await Role.createRole('guest'))
-// console.log(await Item.deleteCartItem(2))
-// console.log(await Item.getCartItemsByOrderId(2))
-// console.log(await Order.getActiveCartOrderByUserId(2))
-// console.log(await Order.destroyCartOrder(3))
-console.log(await Order.updateCartOrder({id: 1, orderStatus: true, userId: 1}))
  } catch (error) {
    throw error;
  }
