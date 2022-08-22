@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({setIsLoggedIn}) => {
+const Login = ({setIsLoggedIn, token, setToken}) => {
     const navigate = useNavigate()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
@@ -27,6 +27,7 @@ const Login = ({setIsLoggedIn}) => {
             if (data.token) {
                 navigate('/');
                 setIsLoggedIn(true)
+                setToken(data.token)
             }
             // if (data.token) {
             //     setIsLoggedIn(true)
