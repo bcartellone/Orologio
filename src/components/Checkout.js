@@ -23,16 +23,14 @@ const Checkout = () => {
         fetchCheckout();
     }, []);
 
-    // function confirmation () {
-    //    if (setLoggedIn) {
-    //     navigate('/Confirmation')
-    //    }
-    // }
+    function confirmation () {
+        navigate('/Confirmation')
+    }
     return (
         <div>
             <h1>Checkout</h1>
             <h2></h2>
-            {/* <button onClick={confirmation}>Click to confirm your order</button> */}
+            <button onClick={confirmation}>Click to confirm your order</button>
         </div>
     )
 };

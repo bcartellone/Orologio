@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-const SingleProduct = () => {
+const SingleProduct = ({token, isLoggedIn, setIsLoggedIn}) => {
     const { id } = useParams();
 
     const [singleProduct, setSingleProduct] = useState({})
@@ -13,7 +13,7 @@ const SingleProduct = () => {
             const data = await response.json();
             console.log("this is the response:", data)
             setSingleProduct(data)
-           
+           console.log("token:", token)
         } catch (error) {
             console.log(error)
         }
@@ -21,26 +21,41 @@ const SingleProduct = () => {
     fetchSingleProduct();
     }, []);
 
-    // const handleSubmit = async () => {
-    //     try {
-    //         const response = await fetch(`/api/cart_items/`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                     username: username,
-    //                     password: password,
-    //                     roleId: 1
-    //             })
-    //         })
-    //         const data = await response.json();
-    //         console.log("this is the response:", data)
+    const handleSubmit = async () => {
+        try {
+            if (isLoggedIn) {
+            const response = await fetch(`/api/cart_items`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': `Bearer ${token}` 
+                
+                },
+                body: JSON.stringify({
+                        productId: singleProduct.id,
+                })
+            })
+            const data = await response.json();
+        } else {
+            const response = await fetch(`/api/cart_items`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                        productId: singleProduct.id,
+                })
+            })
+            const data = await response.json();
+        }
+        
             
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
+        // console.log("this is the response:", data)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    } 
     return (
         <div style={{ display: 'flex', justifyContent: 'space-evenly'}}>
             <div>
@@ -52,7 +67,7 @@ const SingleProduct = () => {
             </div>
             <div style={{ border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
                 <h1>${singleProduct.price}</h1>
-                {/* <button onClick={handleSubmit}>Add to Cart</button> */}
+                <button onClick={handleSubmit}>Add to Cart</button>
             </div>
         </div>
     )

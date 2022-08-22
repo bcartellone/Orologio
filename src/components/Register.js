@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import './Cart.css';
 
-const Register = ({setIsLoggedIn}) => {
+const Register = ({setIsLoggedIn, token, setToken}) => {
     const navigate = useNavigate()
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -28,12 +29,13 @@ const Register = ({setIsLoggedIn}) => {
             if (data.token) {
                 navigate('/');
                 setIsLoggedIn(true)
+                setToken(data.token);
             }
             // console.log('token:', data.token);
             // if (data.token) {
             //     setIsLoggedIn(true)
             // }
-            // setToken(data.token);
+             
            
             // console.log("this is the new token", token)
             // history.push('/')
