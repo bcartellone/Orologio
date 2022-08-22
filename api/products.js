@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { requireUser, requireAdmin } = require("./utils")
-// const { getAllProducts } = require("../db/models/products")
-const { Products } = require("../db/DB_cyborg flying.js")
+const { Products, Role } = require("../db/DB_cyborg flying.js");
+const { requireUser } = require("./utils")
 
 router.get("/", async (req, res, next) => {
     try {
@@ -29,45 +28,61 @@ router.get("/:productId", async(req, res, next) => {
     }
 })
 
-router.delete("/:productId", requireAdmin, async(req, res, next) => {
+router.delete("/:productId", requireUser, async(req, res, next) => {
     const { productId } = req.params;
+    const user = req.user
+        try {
+            const role = await Role.getRoleById(user.roleId)
+            if (role.name === 'admin') {
+                const deleted = await Products.deleteProduct(productId);
+                res.send(`${deleted.name} deleted from database`)
+            } else {
+                res.send('User must be an admin to perform this function')
+            }
+        } catch (error) {
+            next(error)
+        }
+})
 
+router.post("/", requireUser, async(req, res, next) => {
+    const { name, price, description, image } = req.body;
+    const user = req.user
     try {
-        const deleted = await Products.deleteProduct(productId);
-        res.send(deleted)
+        const role = await Role.getRoleById(user.roleId)
+        if (role.name === 'admin') {
+            const product = await Products.createProduct({
+                name,
+                price, 
+                description,
+                image
+            })
+            res.send(product)
+        } else {
+            res.send('User must be an admin to perform this function')
+        }
     } catch (error) {
         next(error)
     }
 })
 
-router.post("/", requireAdmin, async(req, res, next) => {
-    const { name, price, description, image } = req.body;
-
-    try {
-        const product = await Products.createProduct({
-            name,
-            price, 
-            description,
-            image
-        })
-        res.send(product)
-    } catch (error) {
-        next(error)
-    }
-})
-
-router.patch("/:productId", requireAdmin, async(req, res, next) => {
+router.patch("/:productId", requireUser, async(req, res, next) => {
     const { name, price, description, image } = req.body;
     const { productId } = req.params;
-
+    const user = req.user
     try {
-        const product = await Products.updateProduct({
-            name,
-            price,
-            description,
-            image
-        })
-        res.send(product);
+        const role = await Role.getRoleById(user.roleId)
+        if (role.name === 'admin') {
+            const product = await Products.updateProduct({
+                id: productId,
+                name,
+                price,
+                description,
+                image
+            })
+            res.send(product);
+        } else {
+            res.send('User must be an admin to perform this function')
+        }
     } catch (error) {
         next(error)
     }

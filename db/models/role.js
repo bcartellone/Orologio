@@ -13,6 +13,21 @@ async function createRole(name) {
     }
 }
 
+async function getRoleById(id) {
+    if (!id) {
+        return;
+    }
+    try {
+        const { rows: [role] } = await client.query(`
+            SELECT *
+            FROM role
+            WHERE id=$1
+        `, [id]);
+        return role
+    } catch (error) {
+        throw error
+    }
+}
 module.exports = {
-    createRole,
+    createRole, getRoleById
 }
