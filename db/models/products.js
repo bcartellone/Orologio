@@ -15,13 +15,13 @@ async function getAllProducts() {
 
 async function createProduct({name,description,price,image}){
     try{
-    const {rows} = await client.query(`
+    const {rows: [product]} = await client.query(`
         INSERT INTO products(name,description,price,image)
         VALUES($1,$2,$3,$4)
         RETURNING *;
 
     `,[name,description,price,image])
-    return rows;
+    return product;
     }
     catch (error){
         throw error;  }

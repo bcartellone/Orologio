@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { requireUser, requireAdmin } = require("./utils");
-const { User } = require("../db/DB_cyborg flying.js")
-// const { getUserByUsername, createUser } = require("../db/models/user")
+const { requireUser } = require("./utils");
+const { User, Order, Item, Role } = require("../db/DB_cyborg flying.js")
 const jwt = require("jsonwebtoken");
-require ("dotenv").config();
 const bcrypt = require('bcrypt');
 const { JWT_SECRET } = process.env;
 
@@ -21,34 +19,52 @@ router.post("/register", async (req, res, next) => {
                 message: `User ${username} is already taken.`,
             })
         }
-        if (password.length < 8) {
+        else if (password.length < 8) {
             res.send({
                 error: "PasswordTooShortError",
                 message: "Password needs at least 8 characters",
                 name: "PasswordTooShortError",
             })
+        } else {
+            if (roleId) {
+                await User.createUser({
+                        username, 
+                        password,
+                        roleId,
+                    });
+            } 
+            if (!roleId) {
+                await User.createUser({
+                    username,
+                    password,
+                    roleId: 1
+                })
+            }
+        const user = await User.getUserByUsername(username);
+        
+        const newOrder = await Order.createCartOrder({
+            orderStatus: true,
+            userId: user.id
+        })
+        
+        if (req.session.cart) {
+            await Promise.all(req.session.cart.items.map(async (eachItem) => {
+                await Item.createCartItem({ productId: eachItem, orderId: newOrder.id})
+            }))
         }
 
-       await User.createUser({
-            username, 
-            password,
-            roleId,
-        });
-        const user = await User.getUserByUsername(username);
-
-        console.log(user);
-        console.log("this is the secret", JWT_SECRET);
-
         const token = jwt.sign({id: user.id, username,}, JWT_SECRET)
-
+        
         res.send({
             message: "Thank you for signing up",
             token,
             user: {
                 id: user.id,
                 username,
+                roleId: user.roleId
             },
         })
+        }
     } catch (error) {
         next(error)
     }
@@ -71,11 +87,18 @@ router.post("/login", async (req, res, next) => {
     const isValid = await bcrypt.compare(password, hashedPassword);
 
     if (user && isValid) {
+        if (req.session.cart) {
+            const existingOrder = await Order.getActiveCartOrderByUserId(user.id)
+            await Promise.all(req.session.cart.items.map(async (eachItem) => {
+                await Item.createCartItem({ productId: eachItem, orderId: existingOrder.id})
+            }))
+        }
       res.send({
         message: "you're logged in!",
         user: {
           id: user.id,
           username,
+          roleId: user.roleId
         },
         token: token,
       });
@@ -90,23 +113,35 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-// router.get("/", requireAdmin, async (req, res, next) => {
-//     try {
-//         const allUsers = await User.getAllUsers();
-//         res.send(allUsers)
-//     } catch (error) {
-//         next(error)
-//     }
-// })
+router.get("/", requireUser, async (req, res, next) => {
+    const user = req.user
+    try {
+        const role = await Role.getRoleById(user.roleId)
+        if (role.name === 'admin') {
+            const allUsers = await User.getAllUsers();
+            res.send(allUsers)
+        } else {
+            res.send("User must be an admin to perform this function")
+        }
+    } catch (error) {
+        next(error)
+    }
+})
 
-// router.get("/:userId", requireAdmin, async (req, res, next) => {
-//     const { userId } = req.params;
-//     try {
-//         const singleUser = await User.getUserById(userId)
-//         res.send(singleUser)
-//     } catch (error) {
-//         next(error)
-//     }
-// })
+router.get("/:userId", requireUser, async (req, res, next) => {
+    const { userId } = req.params;
+    const user = req.user
+    try {
+        const role = await Role.getRoleById(user.roleId)
+        if (role.name === 'admin') {
+            const singleUser = await User.getUserById(userId)
+            res.send(singleUser)
+        } else {
+            res.send("User must be an admin to perform this function")
+        }
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = router;

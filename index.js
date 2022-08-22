@@ -1,7 +1,9 @@
 // This is the Web Server
+require("dotenv").config();
 const express = require('express');
 const server = express();
 
+const session = require('express-session');
 // enable cross-origin resource sharing to proxy api requests
 // from localhost:3000 to localhost:4000 in local dev env
 const cors = require('cors');
@@ -13,6 +15,14 @@ server.use(morgan('dev'));
 
 // handle application/json requests
 server.use(express.json());
+
+server.use(
+  session({
+    secret: 'this is a secret that must always be kept secret',
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
 // here's our static files
 const path = require('path');
