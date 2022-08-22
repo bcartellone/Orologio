@@ -24,7 +24,7 @@ const {
      id SERIAL PRIMARY KEY,
      name VARCHAR(255) NOT NULL,
      description TEXT NOT NULL,
-     price DECIMAL(7,2) DEFAULT 0,
+     price DECIMAL(8,2) DEFAULT 0,
      image TEXT
      );
      
@@ -130,6 +130,56 @@ price: 5300,
 image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
 const product13 = await Products.createProduct ({name: "TAG HEUER",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product14 = await Products.createProduct ({name: "Marine Hora Mundi 5557",
+description: "Marine Hora Mundi wristwatch in gold. Self-winding movement. Dual preset time zones with instant-jump and synchronised date, day/night and city displays. Blue dial in gold, hand-engraved on a rose engine, with sapphire metallization. Luminescent hands and hour-markers. Sapphire caseback. Screw-locked crown. Water-resistant to 10 bar (100m). Diameter: 43.9mm.",
+price: 72700,
+image : "https://www.breguet.com/sites/default/files/styles/page_modele_preview/public/gardetemps/variante/soldat/5557BBYS5WV.jpg?itok=pbJ9swDR"})
+
+const product15 = await Products.createProduct ({name: "Répétition Minutes 7637",
+description: "Classique “Grande Complication” minute repeater wristwatch in 18-carat gold. Hand-wound movement, engraved by hand. Sapphire caseback. Diameter : 42 mm.",
+price: 237000,
+image : "https://www.breguet.com/sites/default/files/styles/page_modele_preview/public/gardetemps/variante/soldat/7637BB2Y9ZU-1.jpg?itok=NewujltN"})
+
+const product16 = await Products.createProduct ({name: "Tradition 7035",
+description: "Tradition watch in 18-carat gold. Bezel set with 68 diamonds weighing approx. 0.8ct. Self-winding movement with retrograde seconds. Gold movement plate and bridges paved with 190 diamonds, approx. 0.45ct. Retrograde seconds indicator set with 2 rubies and 7 pink sapphires. Silicon Breguet balance-spring. Off-centred gold dial paved with 74 diamonds, approx. 0.19ct. Chapter ring in white mother-of-pearl. Sapphire caseback. Water-resistant to 3 bar (30 m). Diameter: 37mm.",
+price: 79900,
+image : "https://www.breguet.com/sites/default/files/styles/page_modele_preview/public/gardetemps/variante/soldat/7035brd89v6-d00d_face_0.jpg?itok=oHwhtHNB"})
+
+const product17 = await Products.createProduct ({name: "Reine de Naples 8938",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product18 = await Products.createProduct ({name: "TAG HEUER",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product19 = await Products.createProduct ({name: "TAG HEUER",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product20 = await Products.createProduct ({name: "TAG HEUER",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product21 = await Products.createProduct ({name: "TAG HEUER",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product22 = await Products.createProduct ({name: "TAG HEUER",
+description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+
+const product23 = await Products.createProduct ({name: "TAG HEUER",
 description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
 price: 1900,
 image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
