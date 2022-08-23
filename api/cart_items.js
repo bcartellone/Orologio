@@ -11,8 +11,8 @@ router.get("/", async (req, res, next) => {
         } else {
             const sessionCart = []
             await Promise.all(cart.items.map(async (eachItem, index) => {
-                const eachProduct = await Products.getProductById(eachItem)
-                sessionCart.push({itemId: index, product: eachProduct})
+                const eachProduct = await Products.getProductById(eachItem.productId)
+                sessionCart.push({itemId: index, product: eachProduct, quantity: eachItem.quantity})
             }))
             res.send(sessionCart)
         }
@@ -23,7 +23,7 @@ router.get("/", async (req, res, next) => {
             const newCart = []
             await Promise.all(cartItems.map(async (eachItem) => {
                 const eachProduct = await Products.getProductById(eachItem.productId)
-                newCart.push({itemId: eachItem.id, product: eachProduct, orderId: eachItem.orderId})
+                newCart.push({itemId: eachItem.id, product: eachProduct, orderId: eachItem.orderId, quantity: eachItem.quantity})
             }))
             res.send(newCart)
         } catch (error) {
@@ -35,26 +35,27 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
     const user = req.user;
     if (!user) {
-        const { productId } = req.body;
-
+        const { productId, quantity } = req.body;
+        const cartItem = { productId, quantity}
         const { cart } = req.session
 
         if (cart) {
             const { items } = cart;
-            items.push(productId)
+            items.push(cartItem)
         } else {
             req.session.cart = {
-                items: [productId]
+                items: [cartItem]
             }
         };
         res.send(`productId: ${productId} successfully added to cart`)
     } else {
-        const { productId } = req.body;
+        const { productId, quantity } = req.body;
         try {
             const order = await Order.getActiveCartOrderByUserId(req.user.id)
             const addedItem = await Item.createCartItem({
                 productId,
-                orderId: order.id
+                orderId: order.id,
+                quantity
             })
             res.send(`productId: ${addedItem.productId} successfully added to cart`)
         } catch (error) {
@@ -81,4 +82,22 @@ router.delete("/:itemId", async (req, res, next) => {
     }
 })
 
+router.patch("/:itemId", async (req, res, next) => {
+    const { itemId } = req.params;
+    const { productId, orderId, quantity } = req.body
+    const user = req.user
+    if (!user) {
+        const allItems = req.session.cart.items
+        allItems.splice(itemId, 1)
+        res.send(200)
+    } else {
+        try {
+            const updatedItem = await Item.updateCartItemsById({id, productId, orderId, quantity});
+            
+            res.send('Item successfully updated')
+        } catch (error) {
+            next(error)
+        }
+    }
+})
 module.exports = router;

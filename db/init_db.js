@@ -50,7 +50,8 @@ const {
      CREATE TABLE cart_items(
        id SERIAL PRIMARY KEY,
        "productId" INTEGER REFERENCES products(id),
-       "orderId" INTEGER REFERENCES cart_order(id)
+       "orderId" INTEGER REFERENCES cart_order(id),
+       quantity INTEGER
 
      );
 
@@ -209,18 +210,18 @@ const order8 = await Order.createCartOrder({orderStatus: true, userId: 8})
 const order9 = await Order.createCartOrder({orderStatus: true, userId: 9})
 const order10 = await Order.createCartOrder({orderStatus: true, userId: 10})
 
-const item1 = await Item.createCartItem({productId: 13, orderId: 10})
-const item2 = await Item.createCartItem({productId: 5, orderId: 9})
-const item3 = await Item.createCartItem({productId: 7, orderId: 2})
-const item4 = await Item.createCartItem({productId: 8, orderId: 3})
-const item5 = await Item.createCartItem({productId: 5, orderId: 9})
-const item6 = await Item.createCartItem({productId: 8, orderId: 3})
-const item7 = await Item.createCartItem({productId: 10, orderId: 6})
-const item8 = await Item.createCartItem({productId: 10, orderId: 7})
-const item9 = await Item.createCartItem({productId: 11, orderId: 2})
-const item10 = await Item.createCartItem({productId: 6, orderId: 3})
-const item11 = await Item.createCartItem({productId: 11, orderId: 2})
-const item12 = await Item.createCartItem({productId: 6, orderId: 2})
+const item1 = await Item.createCartItem({productId: 13, orderId: 10, quantity: 2})
+const item2 = await Item.createCartItem({productId: 5, orderId: 9, quantity: 2})
+const item3 = await Item.createCartItem({productId: 7, orderId: 2, quantity: 2})
+const item4 = await Item.createCartItem({productId: 8, orderId: 3, quantity: 2})
+const item5 = await Item.createCartItem({productId: 5, orderId: 9, quantity: 2})
+const item6 = await Item.createCartItem({productId: 8, orderId: 3, quantity: 2})
+const item7 = await Item.createCartItem({productId: 10, orderId: 6, quantity: 2})
+const item8 = await Item.createCartItem({productId: 10, orderId: 7, quantity: 2})
+const item9 = await Item.createCartItem({productId: 11, orderId: 2, quantity: 2})
+const item10 = await Item.createCartItem({productId: 6, orderId: 3, quantity: 2})
+const item11 = await Item.createCartItem({productId: 11, orderId: 2, quantity: 2})
+const item12 = await Item.createCartItem({productId: 6, orderId: 2, quantity: 2})
 
  } catch (error) {
    throw error;

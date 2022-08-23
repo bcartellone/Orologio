@@ -10,13 +10,14 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import { Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout, Confirmation } from './components';
+import { Users, Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout, Products } from './components';
 
 const App = () => {
     const [cart, setCart] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState('');
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState(0);
+    const [isAdmin, setIsAdmin] = useState(false)
 
     return (
         <>
@@ -26,14 +27,13 @@ const App = () => {
                     <Route index element={<Home/>}/>
                     <Route path={'Shop'} element={<Shop/>}/>
                     <Route path={'Shop/:id'} element={<SingleProduct token={token} setToken={setToken} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
-                    {/* <Route path={'Cart'} element={<Cart cart={cart} setCart={setCart}/>}/> */}
                     <Route path={'Cart'} element={<Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken} total={total} setTotal={setTotal}/>}/>
                     <Route path={'About'} element={<About/>}/>
-                    <Route path={'Register'} element={<Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>}/>
-                    <Route path={'Login'} element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>}/>
+                    <Route path={'Register'} element={<Register setIsAdmin={setIsAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>}/>
+                    <Route path={'Login'} element={<Login setIsAdmin={setIsAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>}/>
                     <Route path={'Checkout'} element={<Checkout total={total}/>}/>
-                    {/* <Route path={'Checkout'} element={<Checkout/>}/> */}
-                    <Route path={'Confirmation'} element={<Confirmation/>}/>
+                    <Route path={'Products'} element={<Products isAdmin={isAdmin}/>}/>
+                    <Route path={'Users'} element={<Users token={token}/>}/>
                 </Route>
             </Routes>   
         </>

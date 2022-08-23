@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './Cart.css';
 
-const Register = ({setIsLoggedIn, token, setToken}) => {
+const Register = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
     const navigate = useNavigate()
 
     const [username, setUsername] = useState('');
@@ -25,7 +25,10 @@ const Register = ({setIsLoggedIn, token, setToken}) => {
             })
             console.log(response);
             const data = await response.json();
-            console.log('data:', data.token);
+            console.log('data:', data);
+            if (data.user.roleId === 2) {
+                setIsAdmin(true)
+            }
             if (data.token) {
                 navigate('/');
                 setIsLoggedIn(true)

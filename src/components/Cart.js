@@ -93,6 +93,18 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
                         </div>
                         <div style={{ border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
                             <h1>${currentItem.product.price}</h1>
+                            <select value={currentItem.quantity}>
+                                <option value="1">Qty: 1</option>
+                                <option value="2">Qty: 2</option>
+                                <option value="3">Qty: 3</option>
+                                <option value="4">Qty: 4</option>
+                                <option value="5">Qty: 5</option>
+                                <option value="6">Qty: 6</option>
+                                <option value="7">Qty: 7</option>
+                                <option value="8">Qty: 8</option>
+                                <option value="9">Qty: 9</option>
+                                <option value="10">Qty: 10</option>
+                            </select>
                             <button value={currentItem.itemId} onClick={deleteHandler}>DELETE</button>
                         </div>
                     </div>

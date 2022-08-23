@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({setIsLoggedIn, token, setToken}) => {
+const Login = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
     const navigate = useNavigate()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
@@ -24,6 +24,9 @@ const Login = ({setIsLoggedIn, token, setToken}) => {
             const data = await response.json();
             console.log('data:', data)
             console.log('token:', data.token)
+            if (data.user.roleId === 2) {
+                setIsAdmin(true)
+            }
             if (data.token) {
                 navigate('/');
                 setIsLoggedIn(true)
