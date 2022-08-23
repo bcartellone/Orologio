@@ -30,15 +30,9 @@ const Register = ({setIsLoggedIn, token, setToken}) => {
                 navigate('/');
                 setIsLoggedIn(true)
                 setToken(data.token);
+                localStorage.setItem("token", data.token)
             }
-            // console.log('token:', data.token);
-            // if (data.token) {
-            //     setIsLoggedIn(true)
-            // }
-             
-           
-            // console.log("this is the new token", token)
-            // history.push('/')
+        
         } catch (error) {
             console.log(error)
         }

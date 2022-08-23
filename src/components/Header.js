@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cart from './Cart';
 
 import './Header.css';
 
-const Header = ({isLoggedIn, setIsLoggedIn}) => {
+const Header = ({isLoggedIn, setIsLoggedIn, cart, setToken}) => {
     const navigate = useNavigate();
+
+    useEffect (() => {
+        if (localStorage.getItem('token')) {
+                setIsLoggedIn(true)
+                setToken(localStorage.getItem('token'))
+        }
+    }, [])
+
     function logoutHandle () {
         setIsLoggedIn(false);
+        setToken('')
+        localStorage.clear()
         navigate('/')
     }
     return (
@@ -26,7 +37,7 @@ const Header = ({isLoggedIn, setIsLoggedIn}) => {
 
                         <div className='navToolsTopRight'>  
 
-                                <a onClick={()=> navigate('/Cart')} >CART ({0})</a>
+                                <a onClick={()=> navigate('/Cart')} >CART ({cart.length})</a>
 
                         </div>
                 </div>

@@ -2,3 +2,9 @@
     display: flex;
     justify-content: center;
 }
+
+.cart img {
+    float: left;
+    height: 300px;
+    width: 300px;
+}
