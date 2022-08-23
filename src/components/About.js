@@ -8,7 +8,7 @@ const About = () => {
         <div>
             <div className='aboutContainer'>
                 <div className='aboutBox'>
-                    <h2> Since its creation is 2022, Cyborg Flying Watches has provided an unmatched experience to those looking for a luxury timepiece. We strive to provide customers with the highest quality of service in order to ensure you find the perfect piece, for the most special of occasions. </h2>
+                    <h3> Since its creation is 2022, Cyborg Flying Watches has provided an unmatched experience to those looking for a luxury timepiece. We strive to provide customers with the highest quality of service in order to ensure you find the perfect piece, for the most special of occasions. </h3>
                 </div>
                 
         </div>
@@ -21,7 +21,7 @@ const About = () => {
         
         <div className='emailContainer'>
                 <div className='emailBox'>
-                    <h3> Please contact us at: customercare@cyborgflying.com with questions or concerns. </h3>
+                    <h4> Please contact us at: customercare@cyborgflying.com with questions or concerns. </h4>
                 </div>
                 
         </div>

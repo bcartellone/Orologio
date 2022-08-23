@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100&display=swap');
+
 .aboutContainer {
     display: flex;
     justify-content: center;
@@ -11,12 +13,16 @@
 .emailContainer {
     display: flex;
     justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    color: grey;
     animation: fadeIn 3s; 
 }
 
 .aboutBox {
     display: flex;
     justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    color: grey;
     width: 950px;
     margin: 20px;
     animation: fadeIn 3s; 
