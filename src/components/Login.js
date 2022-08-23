@@ -28,12 +28,9 @@ const Login = ({setIsLoggedIn, token, setToken}) => {
                 navigate('/');
                 setIsLoggedIn(true)
                 setToken(data.token)
+                localStorage.setItem("token", data.token)
             }
-            // if (data.token) {
-            //     setIsLoggedIn(true)
-            // }
-            // setToken(data.token)
-            // history.push('/')
+            
         } catch (error) {
             console.log(error)
         }
