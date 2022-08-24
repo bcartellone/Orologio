@@ -57,10 +57,6 @@ const {
 
      `)
      console.log("finished creating tables")
-   // drop tables in correct order
-  
-
-   // build tables in correct order
    
  };
 
@@ -73,52 +69,52 @@ async function populateInitialData() {
 const product1 = await Products.createProduct({name: "SANTOS DE CARTIER WATCH",
 description: "Large model, automatic movement, steel, PVD, interchangable metal and rubber straps",
 price: 7800,
-image: "https://www.cartier.com/dw/image/v2/BGTJ_PRD/on/demandware.static/-/Sites-cartier-master/default/dwc44585a1/images/large/637709291804123442-2059162.png?sw=750&sh=750&sm=fit&sfrm=png",})
+image: "https://i.postimg.cc/44p12B27/1-SANTOS-DE-CARTIER-WATCH.jpg",})
 
 const product2 = await Products.createProduct({name: "SANTOS-DUMONT WATCH",
 description : "Large model, quartz movement, steel, leather",
 price : 4000,
-image : "https://www.cartier.com/dw/image/v2/BGTJ_PRD/on/demandware.static/-/Sites-cartier-master/default/dw8d687c03/images/large/637709296017541191-2161441.png?sw=750&sh=750&sm=fit&sfrm=png"})
+image : "https://i.postimg.cc/rFBMyyCY/2-SANTOS-DUMONT-WATCH.jpg"})
 
 const product3 = await Products.createProduct ({name: "SANTOS DE CARTIER CHRONOGRAPH WATCH",
 description: "Extra-large model, automatic movement, steel, ADLC, interchangable rubber and leather bracelets",
 price: 9400,
-image : "https://www.cartier.com/dw/image/v2/BGTJ_PRD/on/demandware.static/-/Sites-cartier-master/default/dwc40ebe7c/images/large/637709290545060653-2098282.png?sw=750&sh=750&sm=fit&sfrm=png"})
+image : "https://i.postimg.cc/PNG9HJsW/3-SANTOS-DE-CARTIER-CHRONOGRAPH.jpg"})
 
 const product4 = await Products.createProduct ({name: "TANK MUST WATCH",
 description: "Small model, high autonomy quartz movement, steel",
 price: 3200,
-image : "https://cdn2.chrono24.com/images/uhren/20164591-suvn842p63960ujrjssxp1xg-Large.jpg"})
+image : "https://i.postimg.cc/5yv1LZfm/4-TANK-MUST-WATCH.jpg"})
 
 const product5 = await Products.createProduct ({name: "TANK LOUIS CARTIER WATCH",
 description: "Large model, hand-wound mechanical movement, rose gold, leather",
 price: 12800,
-image : "https://www.cartier.com/dw/image/v2/BGTJ_PRD/on/demandware.static/-/Sites-cartier-master/default/dw7b65464c/images/large/637758163780702766-2289877.png?sw=750&sh=750&sm=fit&sfrm=png"})
+image : "https://i.postimg.cc/3wRTnyKN/5-TANK-LOUIS-CARTIER.jpg"})
 
 const product6 = await Products.createProduct ({name: "BALLON BLEU DE CARTIER WATCH",
 description: "33 mm, mechanical movement with automatic winding, steel",
 price: 5950,
-image : "https://content.thewosgroup.com/productimage/17310326/17310326_1.jpg?impolicy=zoom"})
+image : "https://i.postimg.cc/QN5r4ZrQ/6-BALLON-BLEU-DE-CARTIER-WATCH.jpg"})
 
 const product7 = await Products.createProduct ({name: "PASHA DE CARTIER WATCH",
 description: "30 mm, quartz movement, steel, interchangable metal and leather straps",
 price: 5300,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+image : "https://i.postimg.cc/L8ydYHzp/7-PASHA-DE-CARTIER-WATCH.jpg"})
 
 const product8 = await Products.createProduct ({name: "DOXA",
 description: "Sub 300 Whitepearl 42.5mm Mens Watch",
 price: 2490,
-image : "https://cdn.shopify.com/s/files/1/0072/9205/9757/products/DOXA_SUB_300T_professional_orange_800x.jpg?v=1585736977"})
+image : "https://i.postimg.cc/Y2QJNN18/8-DOXA.jpg"})
 
 const product9 = await Products.createProduct ({name: "OMEGA",
 description: "Seamaster Diver 300m James Bond 007 2020 Edition",
 price: 9200,
-image : "https://www.omegawatches.com/media/catalog/product/cache/e7984e6883c65585a016084208a7f1f23dbda14c55ba5f81dd86443eff42d1f8/o/m/omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21090422001001-list.jpg"})
+image : "https://i.postimg.cc/05GBKksB/9-OMEGA.jpg"})
 
 const product10 = await Products.createProduct ({name: "BREITLING",
 description: "Endurance Pro 44mm Mens Watch Blue",
 price: 3300,
-image : "https://content.thewosgroup.com/productimage/17532021/17532021_1.jpg?impolicy=zoom"})
+image : "https://i.postimg.cc/wv8w3Pbz/10-BREITLING.jpg"})
 
 const product11 = await Products.createProduct ({name: "HUBLOT",
 description: "Spirit Of Big Bang Magic Sapphire 42mm Mens Watches",
