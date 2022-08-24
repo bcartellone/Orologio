@@ -88,11 +88,12 @@ router.patch("/:itemId", async (req, res, next) => {
     const user = req.user
     if (!user) {
         const allItems = req.session.cart.items
-        allItems.splice(itemId, 1)
+        allItems[itemId].productId = productId
+        allItems[itemId].quantity = quantity
         res.send(200)
     } else {
         try {
-            const updatedItem = await Item.updateCartItemsById({id, productId, orderId, quantity});
+            const updatedItem = await Item.updateCartItemsById({id: itemId, productId, orderId, quantity});
             
             res.send('Item successfully updated')
         } catch (error) {

@@ -27,6 +27,14 @@
     margin-right: 20px;
 }
 
+.userLink {
+    margin-right: 20px;
+}
+
+.logoutLink {
+    margin-right: 20px;
+}
+
 .navToolsTitle {
     display: flex;
     justify-content: center;

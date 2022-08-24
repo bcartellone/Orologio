@@ -38,6 +38,19 @@ async function getCartItemsByOrderId(orderId) {
       throw error;
     }
 }
+
+async function getCartItemsByProductId(id) {
+    try {
+        const { rows } = await client.query(`
+        SELECT *
+        FROM cart_items
+        WHERE "productId"=($1);
+    `, [id])
+        return rows
+    } catch (error) {
+      throw error;
+    }
+}
   
 async function updateCartItemsById({id, productId, orderId, quantity}) {
     try {
@@ -55,5 +68,5 @@ async function updateCartItemsById({id, productId, orderId, quantity}) {
 }
 
 module.exports = {
-    createCartItem, deleteCartItem, getCartItemsByOrderId, updateCartItemsById
+    createCartItem, deleteCartItem, getCartItemsByOrderId, updateCartItemsById, getCartItemsByProductId
 }

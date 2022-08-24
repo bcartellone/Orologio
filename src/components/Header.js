@@ -4,7 +4,7 @@ import Cart from './Cart';
 
 import './Header.css';
 
-const Header = ({isLoggedIn, setIsLoggedIn, cart, setToken}) => {
+const Header = ({isLoggedIn, setIsLoggedIn, subTotal, setToken, setIsAdmin, isAdmin}) => {
     const navigate = useNavigate();
 
     useEffect (() => {
@@ -12,11 +12,15 @@ const Header = ({isLoggedIn, setIsLoggedIn, cart, setToken}) => {
                 setIsLoggedIn(true)
                 setToken(localStorage.getItem('token'))
         }
+        if (localStorage.getItem('isAdmin')) {
+                setIsAdmin(true)
+        }
     }, [])
 
     function logoutHandle () {
         setIsLoggedIn(false);
         setToken('')
+        setIsAdmin(false)
         localStorage.clear()
         navigate('/')
     }
@@ -26,6 +30,9 @@ const Header = ({isLoggedIn, setIsLoggedIn, cart, setToken}) => {
                 <div className="homeFlexContainer">
                         <div className='navToolsTopLeft'>
                                 {
+                                        isAdmin && isLoggedIn ? <><a className='logoutLink' onClick={logoutHandle}>LOGOUT</a>
+                                        <a className='userLink' onClick={() => navigate('/Users')}>USERS</a>
+                                         <a onClick={() => navigate('/Products')}>PRODUCTS</a></> :
                                         isLoggedIn ? <a onClick={logoutHandle}>LOGOUT</a> : 
                                         <>
                                 <a className='registerLink' onClick={()=> navigate('/Register')} >REGISTER</a>
@@ -37,7 +44,7 @@ const Header = ({isLoggedIn, setIsLoggedIn, cart, setToken}) => {
 
                         <div className='navToolsTopRight'>  
 
-                                <a onClick={()=> navigate('/Cart')} >CART ({cart.length})</a>
+                                <a onClick={()=> navigate('/Cart')} >CART ({subTotal})</a>
 
                         </div>
                 </div>

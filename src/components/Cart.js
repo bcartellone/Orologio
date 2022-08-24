@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './Cart.css';
 
-const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total, setTotal}) => {
+const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total, setTotal, subTotal, setSubTotal}) => {
     const navigate = useNavigate()
 
     const fetchCart = async () => {
@@ -15,9 +15,15 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
             setCart(data);
             let sum = 0;
             data.forEach((item) => {
-                sum += Number(item.product.price)
+                sum += (Number(item.product.price) * item.quantity)
             })
             setTotal(sum)
+            let sub = 0;
+            data.forEach((item) => {
+                sub = Number(sub) + Number(item.quantity)
+            })
+            console.log('this is the sub', sub)
+            setSubTotal(sub)
             } else {
                 const response = await fetch('/api/cart_items', {
                     headers: {
@@ -31,9 +37,14 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
                 setCart(data);
                 let sum = 0;
                 data.forEach((item) => {
-                    sum += Number(item.product.price)
+                    sum += (Number(item.product.price) * item.quantity)
                 })
                 setTotal(sum)
+                let sub = 0;
+                data.forEach((item) => {
+                    sub = Number(sub) + Number(item.quantity)
+                })
+                setSubTotal(sub)
             }
             } catch (error) {
                 console.error(error);
@@ -71,10 +82,45 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
                 fetchCart()
             }
         } catch (error) {
-            
+            console.log(error)
         }
      }
 
+     const changeHandler = async (e) => {
+        try {
+            if (isLoggedIn) {
+                console.log(e.target)
+                const response = await fetch(`/api/cart_items/${e.target.getAttribute("data-itemId")}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        productId: e.target.getAttribute("data-productId"),
+                        orderId: e.target.getAttribute("data-orderId"),
+                        quantity: e.target.value,
+                    })
+                })
+                fetchCart()
+            } else {
+                console.log(e.target.getAttribute("data-productId"))
+                const response = await fetch(`/api/cart_items/${e.target.getAttribute("data-itemId")}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId: e.target.getAttribute("data-productId"),
+                        quantity: e.target.value,
+                    })
+                })
+                fetchCart()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+     }
     return (
         <div className='cart' style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{flex: 2, border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
@@ -93,7 +139,7 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
                         </div>
                         <div style={{ border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
                             <h1>${currentItem.product.price}</h1>
-                            <select value={currentItem.quantity}>
+                            <select value={currentItem.quantity} onChange={changeHandler} data-orderId={currentItem.orderId} data-itemId={currentItem.itemId} data-productId={currentItem.product.id}>
                                 <option value="1">Qty: 1</option>
                                 <option value="2">Qty: 2</option>
                                 <option value="3">Qty: 3</option>
@@ -112,7 +158,7 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
                 }
             </div>
             <div style={{border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
-                <h1>Subtotal ({cart.length}): ${total}</h1>
+                <h1>Subtotal ({subTotal}): ${total}</h1>
                 <button onClick={order}>Proceed to checkout</button>
             </div>
         </div>

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { Products, Role } = require("../db/DB_cyborg flying.js");
+const { Products, Role, Item } = require("../db/DB_cyborg flying.js");
+const { updateCartItemsById } = require("../db/models/cart_items.js");
 const { requireUser } = require("./utils")
 
 router.get("/", async (req, res, next) => {
@@ -34,6 +35,10 @@ router.delete("/:productId", requireUser, async(req, res, next) => {
         try {
             const role = await Role.getRoleById(user.roleId)
             if (role.name === 'admin') {
+                const allItems = await Item.getCartItemsByProductId(productId)
+                await Promise.all(allItems.map(async (eachItem) => {
+                    await Item.deleteCartItem(eachItem.id)
+                }))
                 const deleted = await Products.deleteProduct(productId);
                 res.send(`${deleted.name} deleted from database`)
             } else {
