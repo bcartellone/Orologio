@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.singleProductContainer {
+   display: 'flex';
+   flex-direction: row;
+   justify-content: center;
+   height: 750px;
+   font-family: 'Work Sans', sans-serif;
+}
+
+.elementsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    height: 750px;
+    width: 750px;
+    margin: 0px;
+}
+
+.imageBox {
+    display: flex;
+    margin-top: 40px;
+    height: 750px;
+    width: 750px;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    height: 750px;
+    width: 750px;
+}
+
+.nameContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    width: 750px;
+    margin: 0px;
+}
+
+.descContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 750px;
+    margin: 0px;
+}
+
+.priceContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 750px;
+    margin: 0px;
+}
+
+.dropContainer {
+    display: flex;
+    justify-content: center;
+    width: 750px;
+    margin: 0px;
+}
+
+.selectStyle {
+    border: none;
+    background: none;
+}
+
+.buttonStyle {
+    border: none;
+    background: none;
+}

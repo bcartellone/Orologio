@@ -122,24 +122,27 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
         }
      }
     return (
-        <div className='cart' style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{flex: 2, border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
+        <div className='cart'>
+            <div className='cartContainer'>
                 <h1>Shopping Cart</h1>
                 {
                 cart.length ? cart.map((currentItem, idx) => {
                     console.log("current item:", cart);
                 return (
-                    <div style={{ padding: '5px', border: '1px solid black', display: 'flex', justifyContent: 'space-evenly'}}>
-                        <div>
-                            <img src={currentItem.product.image} alt={currentItem.product.description} ></img>
+                    <div className='indivItemContainer'>
+                        <div className='imageContainer'>
+                            <img className="imageStyle" src={currentItem.product.image} alt={currentItem.product.description} ></img>
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center'}}>
-                            <h1 style={{ textAlign: 'center'}}>{currentItem.product.name}</h1>
-                            <p style={{ textAlign: 'center'}}>{currentItem.product.description}</p>
+                        <div className='textContainer'>
+                            <div className='textContainerSub'>
+                            <h1 className='nameContainer'>{currentItem.product.name}</h1>
+                            <p className='descContainer'>{currentItem.product.description}</p>
+                        
+                        <div className='priceContainer'>
+                            <h1 className='priceStyle'>${currentItem.product.price}</h1>
                         </div>
-                        <div style={{ border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
-                            <h1>${currentItem.product.price}</h1>
-                            <select value={currentItem.quantity} onChange={changeHandler} data-orderId={currentItem.orderId} data-itemId={currentItem.itemId} data-productId={currentItem.product.id}>
+                        <div className='dropContainer'>    
+                            <select className='selectStyle' value={currentItem.quantity} onChange={changeHandler} data-orderId={currentItem.orderId} data-itemId={currentItem.itemId} data-productId={currentItem.product.id}>
                                 <option value="1">Qty: 1</option>
                                 <option value="2">Qty: 2</option>
                                 <option value="3">Qty: 3</option>
@@ -151,15 +154,17 @@ const Cart = ({cart, setCart, isLoggedIn, setIsLoggedIn, token, setToken, total,
                                 <option value="9">Qty: 9</option>
                                 <option value="10">Qty: 10</option>
                             </select>
-                            <button value={currentItem.itemId} onClick={deleteHandler}>DELETE</button>
+                            <button className='buttonStyle' value={currentItem.itemId} onClick={deleteHandler}>DELETE</button>
+                        </div>
+                        </div>
                         </div>
                     </div>
                     )}) : <h1>Cart Is Empty</h1>
                 }
             </div>
-            <div style={{border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
+            <div className='subtotalContainer'>
                 <h1>Subtotal ({subTotal}): ${total}</h1>
-                <button onClick={order}>Proceed to checkout</button>
+                <button className='button2Style' onClick={order}>Proceed To Checkout</button>
             </div>
         </div>
     )

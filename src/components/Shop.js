@@ -30,24 +30,32 @@ const Shop = () => {
     }
 
     return (
-        <div className='shop'>
+        <div className='shopContainer'>
+        <div className='shopBox'>
+            
             {
              
                 products.length ? products.map((currentProduct, idx) => {
                     console.log(currentProduct);
                 return (
-                        <div className ="indivProduct" key={idx}>   
-                            <p>{currentProduct.name}</p>
-                            <p>${currentProduct.price}</p>
-                            <p>{currentProduct.description}</p>
-                            <button value={currentProduct.id} onClick={view}>VIEW</button>
+                   
+                        <div className ="indivProduct" key={idx}>
+                            <div className ="indivProductComps">
                             <img className='product-img' src={currentProduct.image} alt={currentProduct.description}></img>
-                        </div> 
+                            <p className="product-name">{currentProduct.name}</p>
+                            <p className="product-price">${currentProduct.price}</p>
+                            {/* <p>{currentProduct.description}</p> */}
+                            <button className="viewButton" value={currentProduct.id} onClick={view}>VIEW</button>
+                        
+                       
+                        </div>    
+                        </div>    
                     )}) : <div>No products to display!</div>
                 
             }
-
         </div>
+        </div>
+        
     )
 }
 

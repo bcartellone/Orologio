@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+import "./SingleProduct.css";
+
 const SingleProduct = ({token, isLoggedIn, setIsLoggedIn, isAdmin}) => {
     const { id } = useParams();
     const navigate = useNavigate()
@@ -130,17 +132,26 @@ const SingleProduct = ({token, isLoggedIn, setIsLoggedIn, isAdmin}) => {
             <button onClick={handleDelete}>Delete Product</button>
             </> : null
             }
-            <div style={{ display: 'flex', justifyContent: 'space-evenly'}}>
-                <div>
-                    <img src={singleProduct.image} alt={singleProduct.description} ></img>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center'}}>
-                    <h1 style={{ textAlign: 'center'}}>{singleProduct.name}</h1>
-                    <p style={{ textAlign: 'center'}}>{singleProduct.description}</p>
-                </div>
-                <div style={{ border: "1px solid black", boxShadow: "3px 3px gray", padding: "5px"}}>
-                    <h1>${singleProduct.price}</h1>
-                    <select value={quantity} onChange={handleChange}>
+            <div className='singleProductContainer'>
+                <div className='elementsContainer'>
+                <div className="imageContainer">
+                    <div className='imageBox'>
+                        <img src={singleProduct.image} alt={singleProduct.description}></img>
+                    </div>
+                </div>    
+                <div className='textContainer'>
+                    <div className="nameContainer">
+                        <h1>{singleProduct.name}</h1>
+                    </div>
+                    <div className="descContainer">
+                        <p>{singleProduct.description}</p>
+                    </div> 
+                    <div className="priceContainer">
+                        <h1>${singleProduct.price}</h1>
+                    </div>
+
+                    <div className='dropContainer'>  
+                    <select className="selectStyle" value={quantity} onChange={handleChange}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -152,10 +163,15 @@ const SingleProduct = ({token, isLoggedIn, setIsLoggedIn, isAdmin}) => {
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <button onClick={handleSubmit}>Add to Cart</button>
+                    <button className="buttonStyle" onClick={handleSubmit}>Add to Cart</button>
+                </div>    
+                </div>
+                
+                </div>
+                  
                 </div>
             </div>
-        </div>
+        
     )
 };
 
