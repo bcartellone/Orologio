@@ -28,7 +28,7 @@ const Users = ({token}) => {
     return (
         <div>
             {
-                allUsers && token ? allUsers.map((user) => {
+                allUsers[0] && token ? allUsers.map((user) => {
                     return(
                         <div style={{display: 'flex', flexDirection: 'column', border: '2px solid black', padding: '10px'}}>
                             <p>Id: {user.id}</p>

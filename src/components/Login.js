@@ -26,6 +26,7 @@ const Login = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
             console.log('token:', data.token)
             if (data.user.roleId === 2) {
                 setIsAdmin(true)
+                localStorage.setItem("isAdmin", true)
             }
             if (data.token) {
                 navigate('/');

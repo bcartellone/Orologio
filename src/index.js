@@ -18,21 +18,22 @@ const App = () => {
     const [token, setToken] = useState('');
     const [total, setTotal] = useState(0);
     const [isAdmin, setIsAdmin] = useState(false)
+    const [subTotal, setSubTotal] = useState(0)
 
     return (
         <>
-            <Header setToken={setToken} cart={cart} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+            <Header isAdmin={isAdmin} setIsAdmin={setIsAdmin} setToken={setToken} subTotal={subTotal} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
             <Routes>
                 <Route path={'/'}>
                     <Route index element={<Home/>}/>
                     <Route path={'Shop'} element={<Shop/>}/>
-                    <Route path={'Shop/:id'} element={<SingleProduct token={token} setToken={setToken} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
-                    <Route path={'Cart'} element={<Cart cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken} total={total} setTotal={setTotal}/>}/>
+                    <Route path={'Shop/:id'} element={<SingleProduct isAdmin={isAdmin} token={token} setToken={setToken} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
+                    <Route path={'Cart'} element={<Cart subTotal={subTotal} setSubTotal={setSubTotal} cart={cart} setCart={setCart} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken} total={total} setTotal={setTotal}/>}/>
                     <Route path={'About'} element={<About/>}/>
                     <Route path={'Register'} element={<Register setIsAdmin={setIsAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>}/>
                     <Route path={'Login'} element={<Login setIsAdmin={setIsAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>}/>
                     <Route path={'Checkout'} element={<Checkout total={total}/>}/>
-                    <Route path={'Products'} element={<Products isAdmin={isAdmin}/>}/>
+                    <Route path={'Products'} element={<Products token={token} isAdmin={isAdmin}/>}/>
                     <Route path={'Users'} element={<Users token={token}/>}/>
                 </Route>
             </Routes>   

@@ -49,8 +49,9 @@ router.post("/register", async (req, res, next) => {
         
         if (req.session.cart) {
             await Promise.all(req.session.cart.items.map(async (eachItem) => {
-                await Item.createCartItem({ productId: eachItem, orderId: newOrder.id})
+                await Item.createCartItem({ productId: eachItem.productId, orderId: newOrder.id, quantity: eachItem.quantity})
             }))
+            
         }
 
         const token = jwt.sign({id: user.id, username,}, JWT_SECRET)
@@ -90,8 +91,9 @@ router.post("/login", async (req, res, next) => {
         if (req.session.cart) {
             const existingOrder = await Order.getActiveCartOrderByUserId(user.id)
             await Promise.all(req.session.cart.items.map(async (eachItem) => {
-                await Item.createCartItem({ productId: eachItem, orderId: existingOrder.id})
+                await Item.createCartItem({ productId: eachItem.productId, orderId: existingOrder.id, quantity: eachItem.quantity})
             }))
+            
         }
       res.send({
         message: "you're logged in!",
