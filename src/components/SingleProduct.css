@@ -76,3 +76,14 @@
     border: none;
     background: none;
 }
+
+.buttonStyle:hover {
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.editProductForm {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

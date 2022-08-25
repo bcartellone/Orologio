@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.productsContainerMain {
+    display: flex;
+    justify-content: center;
+}
+
+.productsContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Work Sans', sans-serif;
+    width: 200px;
+    margin-top: 40px;
+}
+
+.nameBox {
+    margin: 10px;
+}
+
+.priceBox {
+    margin: 10px;
+}
+
+.descBox {
+    margin: 10px;
+}
+
+.imageBoxProducts {
+    margin: 10px;
+    height: 20px;
+    width: 175px;
+}
+
+.createProductButton {
+    margin: 10px;
+    font-family: 'Work Sans', sans-serif;
+    background: none;
+    border: 1px solid black;
+}
+
+.createProductButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: .8;
+    transition: 0.3s;
+}
+
+.createProductButton:not(:hover) {
+    transition: 0.3s;
+}
+
+.adminText {
+    display: flex;
+    font-family: 'Work Sans', sans-serif;
+    justify-content: center;
+}

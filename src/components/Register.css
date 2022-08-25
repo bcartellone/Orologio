@@ -1,5 +1,56 @@
-.registerBox {
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.register-body {
     display: flex;
     justify-content: center;
-    
+    flex-direction: column;
+    font-family: 'Work Sans', sans-serif;
 }
+
+.userRegisterText {
+    display: flex;
+    justify-content: center;
+}
+
+.register-form {
+    display: flex;
+    justify-content: center;
+}
+
+.usernameInput {
+    border: none;
+    background: none;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.usernameInput:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: .8;
+}
+
+.passwordInput {
+    border: none;
+    background: none;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.passwordInput:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: .8;
+}
+
+.submitButton {
+    font-family: 'Work Sans', sans-serif;
+    background: none;
+    border: 1px solid black;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.submitButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: .8;
+}
+

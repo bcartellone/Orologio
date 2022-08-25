@@ -118,7 +118,9 @@ const SingleProduct = ({token, isLoggedIn, setIsLoggedIn, isAdmin}) => {
     return (
         <div>
             {
-                isAdmin ? <><form onSubmit={handleForm}>
+                isAdmin ? <>
+                <div className='editProductForm'>
+                <form onSubmit={handleForm}>
                 <input type="text" placeholder="name" value={name} onChange=
                 {(e) => setName(e.target.value)}></input> 
                 <input type="text" placeholder="price" value={price} onChange=
@@ -130,6 +132,7 @@ const SingleProduct = ({token, isLoggedIn, setIsLoggedIn, isAdmin}) => {
                 <button type="submit">Edit Product</button>
             </form>
             <button onClick={handleDelete}>Delete Product</button>
+            </div>
             </> : null
             }
             <div className='singleProductContainer'>

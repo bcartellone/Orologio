@@ -1,6 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.payContainerMain {
+    display: flex;
+    justify-content: center;
+}
+
 .pay-container {
-    /* padding: 5px 20px 15px 20px;
-    border: 1px solid lightgrey;
-    border-radius: 3px; */
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Work Sans', sans-serif;
+    width: 200px;
+    margin-top: 40px;
+}
+
+.emailBox {
+    margin: 10px;
+}
+
+.cardBox {
+    margin: 10px;
+}
+
+.monthBox {
+    margin: 10px;
+}
+
+.cvcBox {
+    margin: 10px;
+}
+
+.nameBox {
+    margin: 10px;
+}
+
+.confirmButton {
+    margin: 10px;
+    font-family: 'Work Sans', sans-serif;
+    background: none;
+    border: 1px solid black;
+}
+
+.confirmButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: .8;
+    transition: 0.3s;
+}
+
+.confirmButton:not(:hover) {
+    transition: 0.3s;
 }

@@ -26,20 +26,20 @@ const Checkout = ({total}) => {
     }
 
     return (
-        <div>
+        <div className='payContainerMain'>
             <form className='pay-container'>
                 <label>Email</label>
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                <input className='emailBox' type="text" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 <label>Card Information</label>
-                <input type="text" value={cartNum} onChange={(e) => setCardNum(e.target.value)}
+                <input className='cardBox' type="text" value={cartNum} onChange={(e) => setCardNum(e.target.value)}
                 placeholder="1234 1234 1234 1234"></input>
-                <input type="text" value={cardDate} onChange={(e) => setCardDate(e.target.value)}
+                <input className='monthBox' type="text" value={cardDate} onChange={(e) => setCardDate(e.target.value)}
                 placeholder="MM/YY"></input>
-                <input type="text" value={cardCvc} onChange={(e) => setCardCvc(e.target.value)}
+                <input className='cvcBox' type="text" value={cardCvc} onChange={(e) => setCardCvc(e.target.value)}
                 placeholder="CVC"></input>
                 <label>Name on card</label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
-                <button onClick={() => {confirmation();alert('Thank you for your purchase');navigate('/')}}>Pay ${total}</button>
+                <input className='nameBox' type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
+                <button className='confirmButton' onClick={() => {confirmation();alert('Thank you for your purchase');navigate('/')}}>Pay ${total}</button>
             </form>
         </div>
     )

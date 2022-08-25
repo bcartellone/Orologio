@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import './Users.css';
+
 
 const Users = ({token}) => {
     const [allUsers, setAllUsers] = useState([])
@@ -26,11 +28,12 @@ const Users = ({token}) => {
         }
     }, []);
     return (
-        <div>
+        <div className='usersContainerMain'>
+        <div className='usersContainer'>
             {
                 allUsers[0] && token ? allUsers.map((user) => {
                     return(
-                        <div style={{display: 'flex', flexDirection: 'column', border: '2px solid black', padding: '10px'}}>
+                        <div className='usersBox'>
                             <p>Id: {user.id}</p>
                             <p>Username: {user.username}</p>
                             <p>roleId: {user.roleId}</p>
@@ -38,6 +41,7 @@ const Users = ({token}) => {
                     )
                 }) : <h1>User must have admin privelages to access users</h1>
             }
+        </div>
         </div>
     )
     

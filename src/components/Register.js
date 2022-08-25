@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './Cart.css';
+import './Register.css';
 
 const Register = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
     const navigate = useNavigate()
@@ -43,16 +43,16 @@ const Register = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
 
     }
     return (
-        <div>
-            <div>
-                <h1>User Registration</h1>
+        <div className='register-body'>
+            <div className="userRegisterText">
+                <h1>Register</h1>
             </div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="username" value={username} onChange=
+            <form className='register-form' onSubmit={handleSubmit}>
+                <input className='usernameInput' type="text" placeholder="username" value={username} onChange=
                 {(e) => setUsername(e.target.value)}></input> 
-                <input type="text" placeholder="password" value={password} onChange=
+                <input className='passwordInput' type="text" placeholder="password" value={password} onChange=
                 {(e) => setPassword(e.target.value)}></input>
-                <button type="submit">Submit</button>
+                <button className="submitButton" type="submit">Submit</button>
             </form>
         </div>
     )
