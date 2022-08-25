@@ -119,67 +119,67 @@ image : "https://i.postimg.cc/wv8w3Pbz/10-BREITLING.jpg"})
 const product11 = await Products.createProduct ({name: "HUBLOT",
 description: "Spirit Of Big Bang Magic Sapphire 42mm Mens Watches",
 price: 90000,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+image : "https://i.postimg.cc/V6STfwbh/11-HUBLOT.jpg"})
 
 const product12 = await Products.createProduct ({name: "TUDOR",
 description: "Black Bay Automatic Black Dial Men's GMT Pepsi Bezel Watch",
 price: 5300,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+image : "https://i.postimg.cc/5N5rNn6f/12-TUDOR.jpg"})
 
 const product13 = await Products.createProduct ({name: "TAG HEUER",
 description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
 price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+image : "https://i.postimg.cc/kGKpSysF/13-TAGHEUER.jpg"})
 
 const product14 = await Products.createProduct ({name: "Marine Hora Mundi 5557",
 description: "Marine Hora Mundi wristwatch in gold. Self-winding movement. Dual preset time zones with instant-jump and synchronised date, day/night and city displays. Blue dial in gold, hand-engraved on a rose engine, with sapphire metallization. Luminescent hands and hour-markers. Sapphire caseback. Screw-locked crown. Water-resistant to 10 bar (100m). Diameter: 43.9mm.",
 price: 72700,
-image : "https://www.breguet.com/sites/default/files/styles/page_modele_preview/public/gardetemps/variante/soldat/5557BBYS5WV.jpg?itok=pbJ9swDR"})
+image : "https://i.postimg.cc/wTYPpSxW/14-Marine-Hora-Mundi-5557.jpg"})
 
 const product15 = await Products.createProduct ({name: "Répétition Minutes 7637",
 description: "Classique “Grande Complication” minute repeater wristwatch in 18-carat gold. Hand-wound movement, engraved by hand. Sapphire caseback. Diameter : 42 mm.",
 price: 237000,
-image : "https://www.breguet.com/sites/default/files/styles/page_modele_preview/public/gardetemps/variante/soldat/7637BB2Y9ZU-1.jpg?itok=NewujltN"})
+image : "https://i.postimg.cc/V63h5hqk/15-Re-pe-tition-Minutes-7637.jpg"})
 
 const product16 = await Products.createProduct ({name: "Tradition 7035",
 description: "Tradition watch in 18-carat gold. Bezel set with 68 diamonds weighing approx. 0.8ct. Self-winding movement with retrograde seconds. Gold movement plate and bridges paved with 190 diamonds, approx. 0.45ct. Retrograde seconds indicator set with 2 rubies and 7 pink sapphires. Silicon Breguet balance-spring. Off-centred gold dial paved with 74 diamonds, approx. 0.19ct. Chapter ring in white mother-of-pearl. Sapphire caseback. Water-resistant to 3 bar (30 m). Diameter: 37mm.",
 price: 79900,
-image : "https://www.breguet.com/sites/default/files/styles/page_modele_preview/public/gardetemps/variante/soldat/7035brd89v6-d00d_face_0.jpg?itok=oHwhtHNB"})
+image : "https://i.postimg.cc/K8ZHKBMB/16-Tradition-7035.jpg"})
 
 const product17 = await Products.createProduct ({name: "Reine de Naples 8938",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+description: "Reine de Naples wristwatch in 18-carat gold.",
+price: 41000,
+image : "https://i.postimg.cc/HWyKFpmc/17-Reine-de-Naples-8938.jpg"})
 
-const product18 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+// const product18 = await Products.createProduct ({name: "TAG HEUER",
+// description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+// price: 1900,
+// image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
-const product19 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+// const product19 = await Products.createProduct ({name: "TAG HEUER",
+// description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+// price: 1900,
+// image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
-const product20 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+// const product20 = await Products.createProduct ({name: "TAG HEUER",
+// description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+// price: 1900,
+// image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
-const product21 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+// const product21 = await Products.createProduct ({name: "TAG HEUER",
+// description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+// price: 1900,
+// image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
-const product22 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+// const product22 = await Products.createProduct ({name: "TAG HEUER",
+// description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+// price: 1900,
+// image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
-const product23 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
+// const product23 = await Products.createProduct ({name: "TAG HEUER",
+// description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
+// price: 1900,
+// image : "https://www.swissluxury.com/product_images/400/WSPA0013.jpg"})
 
 const customerRole = await Role.createRole('customer')
 const adminRole = await Role.createRole('admin')
