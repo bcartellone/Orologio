@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import './Login.css';
 
 const Login = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
     const navigate = useNavigate()
@@ -42,15 +43,16 @@ const Login = ({setIsLoggedIn, token, setToken, setIsAdmin}) => {
     }
     return (
         <div className='login-body'>
-            <div>
-                <h1>User Login</h1>
+            <div className="userLoginText">
+                <h1>Login</h1>
             </div>
+
             <form className='login-form' onSubmit={handleSubmit}>
-                <input type="text" placeholder="username" value={username} onChange=
+                <input className='usernameInput' type="text" placeholder="username" value={username} onChange=
                 {(e) => setUsername(e.target.value)}></input> 
-                <input type="text" placeholder="password" value={password} onChange=
+                <input className='passwordInput' type="text" placeholder="password" value={password} onChange=
                 {(e) => setPassword(e.target.value)}></input>
-                <button type="submit">Submit</button>
+                <button className="submitButton" type="submit">Submit</button>
             </form>
         </div>
     )

@@ -1,10 +1,91 @@
-.cartBox {
-    display: flex;
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+
+.cart {
     justify-content: center;
+    flex-direction: row;
+    font-family: 'Work Sans', sans-serif;
+    width: 1600px;
 }
 
-.cart img {
-    float: left;
+.cartContainer {
+    margin-left: 200px;
+}
+
+.subtotalContainer {
+    margin-left: 200px;
+}
+
+.indivItemContainer {
+    display: flex;
+    height: 400px;
+}
+
+.imageContainer {
+    display: flex;
+    height: 400px;
+}
+
+.imageStyle {
     height: 300px;
     width: 300px;
+    margin-top: 50px;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.textContainerSub {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+
+.nameContainer {
+    display: flex;
+}
+
+.descContainer {
+    display: flex;
+}
+
+.priceContainer {
+    display: flex;
+}
+
+.priceStyle {
+    margin-top: 15px;
+}
+
+.dropContainer {
+    display: flex;
+}
+
+.selectStyle {
+    border: none;
+    background: none;
+}
+
+.buttonStyle {
+    border: none;
+    background: none;
+}
+
+.button2Style {
+    font-family: 'Work Sans', sans-serif;
+    background: none;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.button2Style:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    opacity: .8;
+    transition: 0.3s;
+}
+
+.button2Style:not(:hover) {
+    transition: 0.3s;
 }

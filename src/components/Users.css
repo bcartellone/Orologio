@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.usersContainerMain {
+    display: flex;
+    justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.usersContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 1500px;
+}
+.usersBox {
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+}

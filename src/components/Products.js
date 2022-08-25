@@ -35,24 +35,28 @@ const Products = ({isAdmin, token}) => {
     }
     
     return (
-        <div>
+        
+        <div className='productsContainerMain' >
+            
         {
             isAdmin ? 
             <>
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="name" value={name} onChange=
+            
+                <form className='productsContainer' onSubmit={handleSubmit}>
+                    <input className='nameBox' type="text" placeholder="name" value={name} onChange=
                     {(e) => setName(e.target.value)}></input> 
-                    <input type="text" placeholder="price" value={price} onChange=
+                    <input className='priceBox' type="text" placeholder="price" value={price} onChange=
                     {(e) => setPrice(e.target.value)}></input>
-                    <input type="text" placeholder="description" value={description} onChange=
+                    <input className='descBox' type="text" placeholder="description" value={description} onChange=
                     {(e) => setDescription(e.target.value)}></input> 
-                    <input type="text" placeholder="image" value={image} onChange=
+                    <input className='imageBoxProducts' type="text" placeholder="image" value={image} onChange=
                     {(e) => setImage(e.target.value)}></input>
-                    <button type="submit">Create Product</button>
+                    <button className='createProductButton' type="submit">Create Product</button>
                 </form>
             </>: <h1>User must have admin privelages to access this feature</h1>
         }
         </div>
+    
     )
     
 };
