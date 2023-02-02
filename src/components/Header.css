@@ -35,9 +35,17 @@
     margin-right: 20px;
 }
 
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .navToolsTitle {
     display: flex;
     justify-content: center;
+    height: 50px;
+    width: 100px;
     
 }
 

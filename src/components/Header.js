@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
 
 import './Header.css';
+import orologioLogo from './1. orologio logo v1.png';
 
 const Header = ({isLoggedIn, setIsLoggedIn, subTotal, setToken, setIsAdmin, isAdmin}) => {
     const navigate = useNavigate();
@@ -48,11 +49,11 @@ const Header = ({isLoggedIn, setIsLoggedIn, subTotal, setToken, setIsAdmin, isAd
 
                         </div>
                 </div>
-
+        <div className='logoContainer'>
                 <div className='navToolsTitle'>
-                        <h1>CYBORG FLYING WATCHES</h1>
-
-                </div>     
+                    <img src={orologioLogo} alt='orologio'/>  
+                </div> 
+        </div>
 
                 <div className='navToolsSub'>
                         <a onClick={()=> navigate('/')} >HOME</a>

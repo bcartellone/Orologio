@@ -13,14 +13,14 @@ async function getAllProducts() {
     }
 }
 
-async function createProduct({name,description,price,image}){
+async function createProduct({brand,name,description,price,image}){
     try{
     const {rows: [product]} = await client.query(`
-        INSERT INTO products(name,description,price,image)
-        VALUES($1,$2,$3,$4)
+        INSERT INTO products(brand,name,description,price,image)
+        VALUES($1,$2,$3,$4,$5)
         RETURNING *;
 
-    `,[name,description,price,image])
+    `,[brand,name,description,price,image])
     return product;
     }
     catch (error){
@@ -57,14 +57,14 @@ async function deleteProduct(id) {
     }
 }
 
-async function updateProduct({ id, name, description, price, image }) {
+async function updateProduct({ id, brand, name, description, price, image }) {
     try {
         const { rows: [product] } = await client.query(`
         UPDATE products
-        SET name=$1, description=$2, price=$3, image=$4
+        SET brand=$1, name=$2, description=$3, price=$4, image=$5
         WHERE id=${id}
         RETURNING *;
-        `, [name, description, price, image])
+        `, [brand, name, description, price, image])
 
         return product
     } catch (error) {

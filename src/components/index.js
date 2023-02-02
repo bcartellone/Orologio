@@ -9,6 +9,8 @@ import SingleProduct from './SingleProduct';
 import Checkout from './Checkout';
 import Products from './Products';
 import Users from './Users';
+import Footer from './Footer';
 
-export { Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout, Products, Users };
+
+export { Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout, Products, Users, Footer };
 

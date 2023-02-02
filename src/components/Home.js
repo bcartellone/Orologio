@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-carousel-minimal';
 
 import './Home.css';
-import adimage3 from './adimage3_homepage.jpg';
-import adimage4 from './adimage4_homepage.jpg';
-import adimage5 from './adimage5_homepage.jpg';
+import adimage3 from './1. adimage3_homepage.jpg';
+import adimage4 from './1. adimage4_homepage.jpg';
+import adimage5 from './1. adimage5_homepage.jpg';
 
 const Home = () => {
     const data = [

@@ -22,6 +22,7 @@ const {
    await client.query(`
    CREATE TABLE products(
      id SERIAL PRIMARY KEY,
+     brand VARCHAR(255) NOT NULL,
      name VARCHAR(255) NOT NULL,
      description TEXT NOT NULL,
      price DECIMAL(8,2) DEFAULT 0,
@@ -66,90 +67,152 @@ async function populateInitialData() {
    // Model.method() adapters to seed your db, for example:
    // const user1 = await User.createUser({ ...user info goes here... })
    
-const product1 = await Products.createProduct({name: "SANTOS DE CARTIER WATCH",
+const product1 = await Products.createProduct({
+brand: "CARTIER",
+name: "SANTOS DE CARTIER",
 description: "Large model, automatic movement, steel, PVD, interchangable metal and rubber straps",
 price: 7800,
 image: "https://i.postimg.cc/44p12B27/1-SANTOS-DE-CARTIER-WATCH.jpg",})
 
-const product2 = await Products.createProduct({name: "SANTOS-DUMONT WATCH",
+const product2 = await Products.createProduct({
+brand: "CARTIER",  
+name: "SANTOS-DUMONT",
 description : "Large model, quartz movement, steel, leather",
 price : 4000,
 image : "https://i.postimg.cc/rFBMyyCY/2-SANTOS-DUMONT-WATCH.jpg"})
 
-const product3 = await Products.createProduct ({name: "SANTOS DE CARTIER CHRONOGRAPH WATCH",
+const product3 = await Products.createProduct ({
+brand: "CARTIER",
+name: "SANTOS DE CARTIER CHRONOGRAPH",
 description: "Extra-large model, automatic movement, steel, ADLC, interchangable rubber and leather bracelets",
 price: 9400,
 image : "https://i.postimg.cc/PNG9HJsW/3-SANTOS-DE-CARTIER-CHRONOGRAPH.jpg"})
 
-const product4 = await Products.createProduct ({name: "TANK MUST WATCH",
+const product4 = await Products.createProduct ({
+brand: "CARTIER",
+name: "TANK MUST",
 description: "Small model, high autonomy quartz movement, steel",
 price: 3200,
 image : "https://i.postimg.cc/5yv1LZfm/4-TANK-MUST-WATCH.jpg"})
 
-const product5 = await Products.createProduct ({name: "TANK LOUIS CARTIER WATCH",
+const product5 = await Products.createProduct ({
+brand: "CARTIER",
+name: "TANK LOUIS",
 description: "Large model, hand-wound mechanical movement, rose gold, leather",
 price: 12800,
 image : "https://i.postimg.cc/3wRTnyKN/5-TANK-LOUIS-CARTIER.jpg"})
 
-const product6 = await Products.createProduct ({name: "BALLON BLEU DE CARTIER WATCH",
+const product6 = await Products.createProduct ({
+brand: "CARTIER",
+name: "BALLON BLEU DE CARTIER",
 description: "33 mm, mechanical movement with automatic winding, steel",
 price: 5950,
 image : "https://i.postimg.cc/QN5r4ZrQ/6-BALLON-BLEU-DE-CARTIER-WATCH.jpg"})
 
-const product7 = await Products.createProduct ({name: "PASHA DE CARTIER WATCH",
+const product7 = await Products.createProduct ({
+brand: "CARTIER",
+name: "PASHA DE CARTIER",
 description: "30 mm, quartz movement, steel, interchangable metal and leather straps",
 price: 5300,
 image : "https://i.postimg.cc/L8ydYHzp/7-PASHA-DE-CARTIER-WATCH.jpg"})
 
-const product8 = await Products.createProduct ({name: "DOXA",
-description: "Sub 300 Whitepearl 42.5mm Mens Watch",
+const product8 = await Products.createProduct ({
+brand: "DOXA",
+name: "SUB 300",
+description: "Whitepearl 42.5mm Mens Watch",
 price: 2490,
 image : "https://i.postimg.cc/Y2QJNN18/8-DOXA.jpg"})
 
-const product9 = await Products.createProduct ({name: "OMEGA",
-description: "Seamaster Diver 300m James Bond 007 2020 Edition",
+const product9 = await Products.createProduct ({
+brand: "OMEGA",
+name: "SEAMASTER DIVER JAMES BOND 007",
+description: "2020 Edition",
 price: 9200,
 image : "https://i.postimg.cc/05GBKksB/9-OMEGA.jpg"})
 
-const product10 = await Products.createProduct ({name: "BREITLING",
-description: "Endurance Pro 44mm Mens Watch Blue",
+const product10 = await Products.createProduct ({
+brand: "BREITLING",
+name: "ENDURANCE PRO",
+description: "44mm Mens Watch Blue",
 price: 3300,
 image : "https://i.postimg.cc/wv8w3Pbz/10-BREITLING.jpg"})
 
-const product11 = await Products.createProduct ({name: "HUBLOT",
-description: "Spirit Of Big Bang Magic Sapphire 42mm Mens Watches",
+const product11 = await Products.createProduct ({
+brand: "HUBLOT",
+name: "SPIRIT OF BIG BANG",
+description: "Magic Sapphire 42mm Mens Watches",
 price: 90000,
 image : "https://i.postimg.cc/V6STfwbh/11-HUBLOT.jpg"})
 
-const product12 = await Products.createProduct ({name: "TUDOR",
-description: "Black Bay Automatic Black Dial Men's GMT Pepsi Bezel Watch",
+const product12 = await Products.createProduct ({
+brand: "TUDOR",  
+name: "BLACK BAY PEPSI",
+description: "Automatic Black Dial Men's GMT Pepsi Bezel Watch",
 price: 5300,
 image : "https://i.postimg.cc/5N5rNn6f/12-TUDOR.jpg"})
 
-const product13 = await Products.createProduct ({name: "TAG HEUER",
-description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",
-price: 1900,
-image : "https://i.postimg.cc/kGKpSysF/13-TAGHEUER.jpg"})
+const product13 = await Products.createProduct ({
+brand: "TUDOR",  
+name: "PRINCE DAY/DATE",
+description: "n/a",
+price: 3500,
+image : "https://i.postimg.cc/ncJmcGLH/18-TUDOR-PRINCE-DAYDATE.jpg"})
 
-const product14 = await Products.createProduct ({name: "Marine Hora Mundi 5557",
+const product14 = await Products.createProduct ({
+brand: "BREGUET",
+name: "Marine Hora Mundi",
 description: "Marine Hora Mundi wristwatch in gold. Self-winding movement. Dual preset time zones with instant-jump and synchronised date, day/night and city displays. Blue dial in gold, hand-engraved on a rose engine, with sapphire metallization. Luminescent hands and hour-markers. Sapphire caseback. Screw-locked crown. Water-resistant to 10 bar (100m). Diameter: 43.9mm.",
 price: 72700,
 image : "https://i.postimg.cc/wTYPpSxW/14-Marine-Hora-Mundi-5557.jpg"})
 
-const product15 = await Products.createProduct ({name: "Répétition Minutes 7637",
+const product15 = await Products.createProduct ({
+brand: "BREGUET",
+name: "Répétition Minutes",
 description: "Classique “Grande Complication” minute repeater wristwatch in 18-carat gold. Hand-wound movement, engraved by hand. Sapphire caseback. Diameter : 42 mm.",
 price: 237000,
 image : "https://i.postimg.cc/V63h5hqk/15-Re-pe-tition-Minutes-7637.jpg"})
 
-const product16 = await Products.createProduct ({name: "Tradition 7035",
+const product16 = await Products.createProduct ({
+brand: "BREGUET",  
+name: "Tradition",
 description: "Tradition watch in 18-carat gold. Bezel set with 68 diamonds weighing approx. 0.8ct. Self-winding movement with retrograde seconds. Gold movement plate and bridges paved with 190 diamonds, approx. 0.45ct. Retrograde seconds indicator set with 2 rubies and 7 pink sapphires. Silicon Breguet balance-spring. Off-centred gold dial paved with 74 diamonds, approx. 0.19ct. Chapter ring in white mother-of-pearl. Sapphire caseback. Water-resistant to 3 bar (30 m). Diameter: 37mm.",
 price: 79900,
 image : "https://i.postimg.cc/K8ZHKBMB/16-Tradition-7035.jpg"})
 
-const product17 = await Products.createProduct ({name: "Reine de Naples 8938",
+const product17 = await Products.createProduct ({
+brand: "BREGUET",
+name: "Reine de Naples",
 description: "Reine de Naples wristwatch in 18-carat gold.",
 price: 41000,
 image : "https://i.postimg.cc/HWyKFpmc/17-Reine-de-Naples-8938.jpg"})
+
+const product18 = await Products.createProduct ({
+brand: "TAG HEUER",  
+name: "FORMULA 1 RED BULL RACING",
+description: "Special Edition Quartz Chronograph 43mm Mens Watch",
+price: 1900,
+image : "https://i.postimg.cc/kGKpSysF/13-TAGHEUER.jpg"})
+
+const product19 = await Products.createProduct ({
+brand: "ROLEX",  
+name: "SUBMARINER",
+description: "n/a",
+price: 13000,
+image : "https://i.postimg.cc/k5c1fghS/19-ROLEX-SUBMARINER.jpg"})
+
+const product20 = await Products.createProduct ({
+brand: "ROLEX",  
+name: "DATEJUST",
+description: "n/a",
+price: 5500,
+image : "https://i.postimg.cc/C19Qf6Qr/20-ROLEX-DATEJUST.jpg"})
+
+const product21 = await Products.createProduct ({
+brand: "ROLEX",  
+name: "YACHT-MASTER",
+description: "n/a",
+price: 16000,
+image : "https://i.postimg.cc/CKqDxPbx/21-ROLEX-YACHT-MASTER.jpg"})
 
 // const product18 = await Products.createProduct ({name: "TAG HEUER",
 // description: "Special Edition Formula 1 Red Bull Racing Quartz Chronograph 43mm Mens Watch",

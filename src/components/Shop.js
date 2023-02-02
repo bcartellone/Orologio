@@ -37,11 +37,12 @@ const Shop = () => {
              
                 products.length ? products.map((currentProduct, idx) => {
                     console.log(currentProduct);
+
                 return (
-                   
                         <div className ="indivProduct" key={idx}>
                             <div className ="indivProductComps">
                             <img className='product-img' src={currentProduct.image} alt={currentProduct.description}></img>
+                            <h3 className="product-brand">{currentProduct.brand}</h3>
                             <p className="product-name">{currentProduct.name}</p>
                             <p className="product-price">${currentProduct.price}</p>
                             {/* <p>{currentProduct.description}</p> */}

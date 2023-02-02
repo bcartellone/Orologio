@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.footerMain {
+    display: flex;
+    font-family: 'Work Sans', sans-serif;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 200px;
+    background-color:  #dfdedb;
+    height: 100px;
+}
+
+.socialImages {
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+}

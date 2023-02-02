@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import { Users, Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout, Products } from './components';
+import { Users, Header, Shop, Home, Cart, About, Register, Login, SingleProduct, Checkout, Products, Footer } from './components';
 
 const App = () => {
     const [cart, setCart] = useState({});
@@ -36,7 +36,8 @@ const App = () => {
                     <Route path={'Products'} element={<Products token={token} isAdmin={isAdmin}/>}/>
                     <Route path={'Users'} element={<Users token={token}/>}/>
                 </Route>
-            </Routes>   
+            </Routes>
+            <Footer isAdmin={isAdmin} setIsAdmin={setIsAdmin} setToken={setToken} subTotal={subTotal} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>   
         </>
        
     
