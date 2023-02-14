@@ -10,7 +10,7 @@
     "server:dev": "nodemon index.js",
     "db:build": "node ./db/init_db",
     "start:dev": "concurrently \"npm run client:build\" \"npm run client:dev\" \"npm run server:dev\"",
-    "start": "node index.js",
+    "start": "react-scripts --openssl-legacy-provider start",
     "test": "jest --runInBand"
   },
   "keywords": [],
@@ -40,7 +40,8 @@
     "supertest": "^6.2.1"
   },
   "engines": {
-    "node": "18.13.0"
+    "node": "18.13.0",
+    "npm": "8.19.3"
   },
   "proxy": "http://localhost:4000",
   "browserslist": {
