@@ -51,7 +51,9 @@ const Shop = () => {
                        
                         </div>    
                         </div>    
-                    )}) : <div>No products to display!</div>
+                    )}) : <div>
+                            <h1>CURRENTLY DOWN FOR MAINTENANCE</h1>
+                          </div>
                 
             }
         </div>
